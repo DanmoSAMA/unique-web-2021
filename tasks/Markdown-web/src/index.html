@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Markdown Editor</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="topbar">
+    <a href="javascript:;">DOWNLOAD</a>
+  </div>
+  <div id="page">
+    <div id="header">
+      <h2 id="doc-name">DOCUMENT NAME</h2>
+      <input type="text" value="Untitled document">
+    </div>
+    <div id="main">
+      <div id="editor">
+        <h2 class="editor-header">MARKDOWN</h2>
+        <div id="occupy"></div>
+        <div id="editor-mid-layer">
+          <textarea wrap="on" autocorrect="off" autocapitalize="off" spellcheck="false" ></textarea>
+        </div>
+      </div>
+      <div id="preview">
+        <h2 class="preview-header">PREVIEW</h2>
+        <div id="preview-mid-layer">
+          <div id="content-wrapper">
+            <p>写点东西</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="./index.js"></script>
+</html>

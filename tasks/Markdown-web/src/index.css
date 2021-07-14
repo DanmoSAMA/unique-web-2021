@@ -1,0 +1,88 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "ubuntu mono", Monaco;
+  font-size: 15px;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+#topbar{
+  height: 51px;
+  line-height: 51px;
+  padding: 0 24px;
+  background-color: #373D49;
+}
+#topbar > a{
+  color: #fff;
+  float: right;
+}
+#header{
+  margin-top: 14px;
+  height: 70px;
+}
+#doc-name{
+  font-weight: 500;
+  font-size: 13px;
+  color: #999;
+  padding: 0 16px;
+  margin-bottom: 14px;
+}
+#header > input{
+  padding: 1.4px 16px 1px 16px;
+  height: 24px;
+  line-height: 24px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+}
+#main{
+  display: flex;
+}
+#editor{
+  width: 960px;
+  height: 757px;
+}
+#editor-mid-layer{
+  height: 100%;
+  overflow-y: scroll;
+}
+#editor-mid-layer > textarea{
+  outline: none;
+  border: none;
+  float: left;
+  width: 578px;
+  padding: 0 10px;
+  height: 200%;
+  font-size: 14px;
+  /* color: #0C07FF; */
+  resize:none;
+  line-height: 24px;
+  letter-spacing: 4px; /*设置文字间距*/
+}
+.editor-header, .preview-header{
+  font-size: 13px;
+  color: #999;
+  height: 43px;
+  line-height: 43px;
+  padding: 0 16px;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-right: none;
+}
+#occupy{
+  width: 43px;
+  height: 100%;
+  background-color: #eee;
+  float: left;
+}
+#preview{
+  width: 960px;
+  height: 757px;
+}
+#preview-mid-layer{
+  padding: 15px;
+  height: 727px;
+  overflow-y: scroll;
+}
