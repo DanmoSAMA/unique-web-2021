@@ -36,9 +36,11 @@ typedef  struct {                   //邻接表的类型定义
 
 void visit(VertexType data);
 status CreateCraph(ALGraph& G, VertexType V[], KeyType VR[][2]);
-status DFSTraverse(ALGraph& G, void (*visit)(VertexType));
+status DFSRecursive(ALGraph& G, int i, void (*visit)(VertexType));
+status DFSNonRecursive(ALGraph& G, void (*visit)(VertexType));
 status BFSTraverse(ALGraph& G, void (*visit)(VertexType));
-// status TopoSort();
+void GetIndegree(ALGraph G);
+status TopoSort(ALGraph& G, void (*visit)(VertexType));
 
 ALGraph G;
 VertexType V[30];
@@ -46,23 +48,28 @@ VertexType value;
 KeyType VR[100][2];
 KeyType u, v;
 
+int visited1[32];
+int visited2[32];
+int indegree[32];
+
 int main() {
     int op = 1, i = 0, check = 0;
     while (op) {
         system("cls");	printf("\n\n");
-        printf("      	      基于邻接表实现的无向图--菜单 \n");
+        printf("      	      基于邻接表实现的有向图--菜单 \n");
         printf("-------------------------------------------------\n");
         printf("    	  0. Exit\n");
-        printf("    	  1. CreateCraph     2. DFSTraverse\n");
-        printf("    	  3. BFSTraverse     4. TopoSort\n");
+        printf("    	  1. CreateCraph     2. BFSTraverse\n");
+        printf("    	  3. DFSRecursive    4. DFSNonRecursive\n");
+        printf("    	  5. TopoSort\n");
         printf("-------------------------------------------------\n");
-        printf("    请选择你的操作[0~4]:");
+        printf("    请选择你的操作[0~5]:");
         scanf("%d", &op);
         switch (op) {
         case 0:
             break;
         case 1:
-            printf("请输入要创建的无向图：");
+            printf("请输入要创建的有向图：");
             do {
                 scanf("%d%s", &V[i].key, V[i].others);  // 结点信息
             } while (V[i++].key != -1);
@@ -81,25 +88,44 @@ int main() {
             break;
         case 2:
             if (G.vexnum == 0) {
-                printf("该无向图为空，遍历失败！");
+                printf("该有向图为空，遍历失败！");
                 getchar(); getchar();
                 break;
             }
-            printf("该无向图的深度优先遍历结果为：\n");
-            DFSTraverse(G, visit);
+            printf("该有向图的广度优先遍历结果为：\n");
+            BFSTraverse(G, visit);
             getchar(); getchar();
             break;
         case 3:
             if (G.vexnum == 0) {
-                printf("该无向图为空，遍历失败！");
+                printf("该有向图为空，遍历失败！");
                 getchar(); getchar();
                 break;
             }
-            printf("该无向图的广度优先遍历结果为：\n");
-            BFSTraverse(G, visit);
+            printf("该有向图的深度优先遍历结果为：\n");
+            DFSRecursive(G, 0, visit);
             getchar(); getchar();
             break;
         case 4:
+            if (G.vexnum == 0) {
+                printf("该有向图为空，遍历失败！");
+                getchar(); getchar();
+                break;
+            }
+            printf("该有向图的深度优先遍历结果为：\n");
+            DFSNonRecursive(G, visit);
+            getchar(); getchar();
+            break;
+        case 5:
+            if (G.vexnum == 0) {
+                printf("该有向图为空，拓扑排序失败！");
+                getchar(); getchar();
+                break;
+            }
+            if (check = TopoSort(G, visit)) printf("\n该有向图的拓扑排序如上所示");
+            else printf("拓扑排序失败！");
+            getchar(); getchar();
+            break;
         default:
             printf("指令错误！");
             getchar(); getchar();
@@ -117,9 +143,9 @@ status CreateCraph(ALGraph& G, VertexType V[], KeyType VR[][2])
     for (auto v = V; v->key != -1; ++v) {
         if (G.vexnum >= MAX_VERTEX_NUM)             // 图的顶点数超过最大限度
             return ERROR;
-        for (int i = 0; i < G.vexnum; ++i)
-            if (G.vertices[i].data.key == v->key)   // 查看关键字是否重复
-                return ERROR;
+        // for (int i = 0; i < G.vexnum; ++i)
+        //     if (G.vertices[i].data.key == v->key)   // 查看关键字是否重复
+        //         return ERROR;
 
         G.vertices[G.vexnum].data = *v;
         G.vertices[G.vexnum].firstarc = NULL;
@@ -134,18 +160,18 @@ status CreateCraph(ALGraph& G, VertexType V[], KeyType VR[][2])
         if (firstNode == G.vexnum || secondNode == G.vexnum)
             return ERROR;
 
-        for (ArcNode* e = G.vertices[firstNode].firstarc; e; e = e->nextarc)
-            if (e->adjvex == secondNode) return ERROR; // 存在编号相同的结点
+        // for (ArcNode* e = G.vertices[firstNode].firstarc; e; e = e->nextarc)
+        //     if (e->adjvex == secondNode) return ERROR; // 存在编号相同的结点
 
         ArcNode* firstEdge = (ArcNode*)malloc(sizeof(ArcNode)); // 创建表结点并连接在头结点之后
         firstEdge->adjvex = secondNode;
         firstEdge->nextarc = G.vertices[firstNode].firstarc;    // 头插法
         G.vertices[firstNode].firstarc = firstEdge;
 
-        ArcNode* secondEdge = (ArcNode*)malloc(sizeof(ArcNode));
-        secondEdge->adjvex = firstNode; 
-        secondEdge->nextarc = G.vertices[secondNode].firstarc;
-        G.vertices[secondNode].firstarc = secondEdge;
+        // ArcNode* secondEdge = (ArcNode*)malloc(sizeof(ArcNode));
+        // secondEdge->adjvex = firstNode; 
+        // secondEdge->nextarc = G.vertices[secondNode].firstarc;
+        // G.vertices[secondNode].firstarc = secondEdge;
 
         G.arcnum++;
     }
@@ -157,17 +183,33 @@ void visit(VertexType data) {
     printf("%d %s\n", data.key, data.others);
 }
 
-status DFSTraverse(ALGraph& G, void (*visit)(VertexType))
+status DFSRecursive(ALGraph& G, int i, void (*visit)(VertexType))
+// 深度优先搜索遍历（递归）
+{
+    ArcNode* p;
+    visited1[i] = 1;
+    VNode v = G.vertices[i];
+    visit(v.data);
+    p = v.firstarc;
+    while (p) {
+        if (!visited1[p->adjvex]) {
+            DFSRecursive(G, p->adjvex, visit);
+        }
+        p = p->nextarc;
+    }
+    return OK;
+}
+
+status DFSNonRecursive(ALGraph& G, void (*visit)(VertexType))
 // 深度优先搜索遍历（非递归）
 {
-    int visited[32] = { 0 };
     int stack[32] = { 0 };
     int top = 0;
 
     for (int i = 0; i < G.vexnum; i++) {
-        if (!visited[i]) {
+        if (!visited2[i]) {
             stack[top++] = i;
-            visited[i] = 1;
+            visited2[i] = 1;
         }
         while (top) {
             int iv = stack[--top];
@@ -176,9 +218,9 @@ status DFSTraverse(ALGraph& G, void (*visit)(VertexType))
 
             int begin = top;    // 从当前结点出发，访问的第一个结点序号
             for (ArcNode* e = v.firstarc; e; e = e->nextarc) {
-                if (!visited[e->adjvex]) {
+                if (!visited2[e->adjvex]) {
                     stack[top++] = e->adjvex;
-                    visited[e->adjvex] = 1;
+                    visited2[e->adjvex] = 1;
                 }
             }
             int end = top - 1;  // 从当前结点出发，访问的最后一个结点序号
@@ -219,5 +261,38 @@ status BFSTraverse(ALGraph& G, void (*visit)(VertexType))
             }
         }
     }
+    return OK;
+}
+
+void GetIndegree(ALGraph G) {
+    // 存每个结点的入度
+    for (int i = 0; i < G.vexnum; i++) {
+        for (int j = 0; j < G.vexnum; j++) {
+            VNode v = G.vertices[j];
+            for (ArcNode* e = v.firstarc; e; e = e->nextarc)
+                if(e->adjvex == i)
+                    indegree[i]++;
+        }
+    }
+}
+
+status TopoSort(ALGraph& G, void (*visit)(VertexType)) {
+    GetIndegree(G);
+    int stack[32] = { 0 };
+    int top = 0, count = 0, i;
+    for (i = 0; i < G.vexnum; i++)
+        if (!indegree[i]) stack[top++] = i; // 将入度为0的顶点入栈
+    while (top) {
+        i = stack[--top];
+        count++;    // 当前已输出的顶点数
+        VNode v = G.vertices[i];
+        visit(v.data);
+        for (auto p = G.vertices[i].firstarc; p; p = p->nextarc) {
+            // 将所有i指向的顶点的入度减1，并将入度减为0的顶点入栈
+            int v = p->adjvex;
+            if (!(--indegree[v])) stack[top++] = v;
+        }
+    }
+    if (count < G.vexnum) return ERROR;
     return OK;
 }
