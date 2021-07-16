@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   font-family: "ubuntu mono", Monaco;
-  font-size: 15px;
 }
 a{
   text-decoration: none;
@@ -56,10 +55,9 @@ a{
   padding: 0 10px;
   height: 200%;
   font-size: 14px;
-  /* color: #0C07FF; */
   resize:none;
   line-height: 24px;
-  letter-spacing: 4px; /*设置文字间距*/
+  letter-spacing: 2px; /*设置文字间距*/
 }
 .editor-header, .preview-header{
   font-size: 13px;
@@ -85,4 +83,26 @@ a{
   padding: 15px;
   height: 727px;
   overflow-y: scroll;
+  letter-spacing: 2px;
+}
+/* #content-wrapper *{
+  display: inline-block;
+}
+#content-wrapper li{
+  display: list-item;
+} */
+#content-wrapper h1,
+#content-wrapper h2,
+#content-wrapper h3,
+#content-wrapper h4,
+#content-wrapper h5,
+#content-wrapper h6{
+  margin-top: 10px;
+}
+#content-wrapper ol,
+#content-wrapper ul{
+  margin: 12px 0;
+}
+#content-wrapper li{
+  margin-left: 40px;
 }
