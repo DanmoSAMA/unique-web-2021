@@ -29,6 +29,7 @@ a{
   margin-bottom: 14px;
 }
 #header > input{
+  background-color: transparent;
   padding: 1.4px 16px 1px 16px;
   height: 24px;
   line-height: 24px;
@@ -48,6 +49,7 @@ a{
   overflow-y: scroll;
 }
 #editor-mid-layer > textarea{
+  background-color: transparent;
   outline: none;
   border: none;
   float: left;
@@ -85,12 +87,6 @@ a{
   overflow-y: scroll;
   letter-spacing: 2px;
 }
-/* #content-wrapper *{
-  display: inline-block;
-}
-#content-wrapper li{
-  display: list-item;
-} */
 #content-wrapper h1,
 #content-wrapper h2,
 #content-wrapper h3,
@@ -105,4 +101,45 @@ a{
 }
 #content-wrapper li{
   margin-left: 40px;
+}
+#content-wrapper .childrenUl,
+#content-wrapper .childrenOl{
+  margin: 0;
+}
+#content-wrapper a{
+  color: #A1AABF;
+  text-decoration: underline;
+}
+
+/*配置文件样式*/
+body.dark{
+  background-color: #23272E;
+  color: #AFBAC7;
+}
+body.dark input{
+  color: #fff;
+}
+body.dark textarea{
+  color: #AFBAC7;
+}
+body.dark #occupy{
+  background-color: #424242;
+}
+body.dark ::-webkit-scrollbar {
+  width: 15px;
+  height: 1px;
+}
+body.dark ::-webkit-scrollbar-thumb {
+  background: #686868;
+}
+body.dark ::-webkit-scrollbar-track {
+  background: #424242;
+}
+#editor-mid-layer.small > textarea, 
+#content-wrapper.small {
+  font-size: 12px;
+}
+#editor-mid-layer.large > textarea, 
+#content-wrapper.large {
+  font-size: 22px;
 }
