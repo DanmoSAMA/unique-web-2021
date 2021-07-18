@@ -1,4 +1,4 @@
-// 使用ajax读取配置文件
+// 读取配置文件
 $.ajax({
   type: "get",
   url: "../config.json",
@@ -26,21 +26,20 @@ const ip = document.getElementById("IP");
 const downloadBtn = document.getElementById("download");
 const contentWrapper = document.getElementById("content-wrapper");
 
-const titleReg = /^\s{0,3}#{1,6}\s/;
-const sharpReg = /^\s{0,3}#{1,6}/;
-const enterReg = /\n$/;
-const italicReg = /\*\S.*\*/;
-const boldReg = /\*{2}\S.*\*{2}/;
-const hyperReg = /\[.+\]\(.+\)/;
-
-const liReg = /^[\*\-]\s/;
-const liChildrenReg = /^\s{4}[\*\-]\s/;
-const numReg = /^[0-9]{1,}\. /;
-const numChildenReg = /^\s{4}[0-9]{1,}\. /;
+const titleReg = /^\s{0,3}#{1,6}\s/; const sharpReg = /^\s{0,3}#{1,6}/;
+const enterReg = /\n$/; const italicReg = /\*\S.*\*/;
+const boldReg = /\*{2}\S.*\*{2}/; const hyperReg = /\[.+\]\(.+\)/;
+const liReg = /^[\*\-]\s/; const liChildrenReg = /^\s{4}[\*\-]\s/;
+const numReg = /^[0-9]{1,}\. /; const numChildenReg = /^\s{4}[0-9]{1,}\. /;
 
 ta.addEventListener('input', setValue);
 ta.addEventListener('keydown', prevTab);
-ip.addEventListener('input', saveTitle);
+ip.addEventListener('input', () => {
+  localStorage.setItem('title', ip.value);
+}); // 保存标题
+downloadBtn.addEventListener('click', () => {
+  download(htmlStr, `${localStorage.getItem('title')}.md`);
+}); // 下载
 
 // 读取localStorage
 let htmlStr = localStorage.getItem('htmlStr');
@@ -54,11 +53,6 @@ if (htmlStr !== null) {
 let title = localStorage.getItem('title');
 ip.value = title;
 
-//下载
-downloadBtn.addEventListener('click', () => {
-  download(htmlStr, `${title}.md`);    
-});
-
 // 解析html字符串
 function parseEl() {
   let htmlStr = ta.value;
@@ -71,55 +65,39 @@ function parseEl() {
   for (let i = 0; i < htmlArr.length; i++) {
     // 标题
     if (titleReg.test(htmlArr[i])) {
-      const titleReg2 = /^\s{0,3}#{2}\s/; const titleReg3 = /^\s{0,3}#{3}\s/;
-      const titleReg4 = /^\s{0,3}#{4}\s/; const titleReg5 = /^\s{0,3}#{5}\s/;
-      const titleReg6 = /^\s{0,3}#{6}\s/;
-
-      if (titleReg2.test(htmlArr[i])) {
-        htmlArr[i] = `<h2>${htmlArr[i]}</h2>`;
-        htmlArr[i] = htmlArr[i].replace(/##/, "");
+      let titleRegArr = new Array;
+      for (let i = 1; i <= 6; i++) {
+        titleRegArr[i] = new RegExp(`^\\s{0,3}#{${i}}\\s`);
       }
-      else if (titleReg3.test(htmlArr[i])) {
-        htmlArr[i] = `<h3>${htmlArr[i]}</h3>`;
-        htmlArr[i] = htmlArr[i].replace(/###/, "");
-      }
-      else if (titleReg4.test(htmlArr[i])) {
-        htmlArr[i] = `<h4>${htmlArr[i]}</h4>`;
-        htmlArr[i] = htmlArr[i].replace(/####/, "");
-      }
-      else if (titleReg5.test(htmlArr[i])) {
-        htmlArr[i] = `<h5>${htmlArr[i]}</h5>`;
-        htmlArr[i] = htmlArr[i].replace(/#####/, "");
-      }
-      else if (titleReg6.test(htmlArr[i])) {
-        htmlArr[i] = `<h6>${htmlArr[i]}</h6>`;
-        htmlArr[i] = htmlArr[i].replace(/######/, "");
-      }
-      else {
-        htmlArr[i] = `<h1>${htmlArr[i]}</h1>`;
-        htmlArr[i] = htmlArr[i].replace(/#/, "");
-      }
+      titleRegArr.forEach((item, index) => {
+        if (titleRegArr[index].test(htmlArr[i])) {
+          htmlArr[i] = `<h${index}>${htmlArr[i]}</h${index}>`;
+          htmlArr[i] = htmlArr[i].replace(titleRegArr[index], "");
+        }
+      })
     }
     // 无序列表
-    else if (liReg.test(htmlArr[i])) {
-      htmlArr[i] = htmlArr[i].replace(liReg, "");
-      htmlArr[i] = `<li>${htmlArr[i]}</li>`;
-      isOrder[i] = false;
-    }
-    else if (liChildrenReg.test(htmlArr[i])) {
-      htmlArr[i] = htmlArr[i].replace(liChildrenReg, "");
-      htmlArr[i] = `<li class="children">${htmlArr[i]}</li>`;
+    else if (liReg.test(htmlArr[i]) || liChildrenReg.test(htmlArr[i])) {
+      if (liReg.test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(liReg, "");
+        htmlArr[i] = `<li>${htmlArr[i]}</li>`;
+      }
+      else {
+        htmlArr[i] = htmlArr[i].replace(liChildrenReg, "");
+        htmlArr[i] = `<li class="children">${htmlArr[i]}</li>`;
+      }
       isOrder[i] = false;
     }
     // 有序列表
-    else if (numReg.test(htmlArr[i])) {
-      htmlArr[i] = htmlArr[i].replace(numReg, "");
-      htmlArr[i] = `<li>${htmlArr[i]}</li>`;
-      isOrder[i] = true;
-    }
-    else if (numChildenReg.test(htmlArr[i])) {
-      htmlArr[i] = htmlArr[i].replace(numChildenReg, "");
-      htmlArr[i] = `<li class="children">${htmlArr[i]}</li>`;
+    else if (numReg.test(htmlArr[i]) || numChildenReg.test(htmlArr[i])) {
+      if (numReg.test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(numReg, "");
+        htmlArr[i] = `<li>${htmlArr[i]}</li>`;
+      }
+      else {
+        htmlArr[i] = htmlArr[i].replace(numChildenReg, "");
+        htmlArr[i] = `<li class="children">${htmlArr[i]}</li>`;
+      }
       isOrder[i] = true;
     }
     // 分割线
@@ -142,26 +120,23 @@ function parseEl() {
     }
     // 超链接
     else if (hyperReg.test(htmlArr[i])) {
-      const hyperReg1 = /\[.+\]/;
-      const hyperReg2 = /\(.+\)/;
-      let infoArr = htmlArr[i].match(hyperReg1);
-      let urlArr = htmlArr[i].match(hyperReg2);
+      const hyperRegArr = [/\[.+\]/, /\(.+\)/, /\[.+\]\(.+\)/];
+      let infoArr = htmlArr[i].match(hyperRegArr[0]);
+      let urlArr = htmlArr[i].match(hyperRegArr[1]);
 
       let infoStr = infoArr[0].replace(/\[/, "").replace(/\]/, "");
       let urlStr = urlArr[0].replace(/\(/, "").replace(/\)/, "");
-
-      htmlArr[i] = htmlArr[i].replace(/\[.+\]\(.+\)/, `<a href='${urlStr}'>${infoStr}</a>`);
+      htmlArr[i] = htmlArr[i].replace(hyperRegArr[2], `<a href='${urlStr}'>${infoStr}</a>`);
     }
     else if (htmlArr[i] === "") {
       htmlArr[i] = '<br/>';
     }
     else {
-      // 没有遇到\时，#的解析方式：
+      // 不转义时#的解析方式：
       if (sharpReg.test(htmlArr[i])) {
-        const sharpReg1 = /^\s{0,3}#{1,6}[^#]+/;
-        const sharpReg2 = /^\s{0,3}#{7,}/;
-        if (!sharpReg1.test(htmlArr[i]) && !sharpReg2.test(htmlArr[i])) {
-          htmlArr[i] = htmlArr[i].replace(/#{1,6}/, "");
+        const sharpRegArr = [/^\s{0,3}#{1,6}[^#]+/, /^\s{0,3}#{7,}/, /#{1,6}/];
+        if (!sharpRegArr[0].test(htmlArr[i]) && !sharpRegArr[1].test(htmlArr[i])) {
+          htmlArr[i] = htmlArr[i].replace(sharpRegArr[2], "");
         }
       }
       // 转义
@@ -175,9 +150,7 @@ function parseEl() {
   // 将li标签放入ul或ol
   for (let i = 0; i < htmlArr.length; i++) {
     if (htmlArr[i].startsWith('<li')) {
-      // 父li
       if (htmlArr[i].startsWith('<li>')) {
-        // 无序列表
         if (!isOrder[i]) {
           // 第一个父li
           if (firstMeetLi) {
@@ -188,7 +161,6 @@ function parseEl() {
             htmlArr[i] = `${htmlArr[i]}</ul>`;
           }
         }
-        // 有序列表
         else {
           if (firstMeetLi) {
             htmlArr[i] = `<ol class="fatherOl">${htmlArr[i]}`;
@@ -199,7 +171,6 @@ function parseEl() {
         }
         firstMeetLi = false;
       }
-      // 子li
       else if (htmlArr[i].startsWith('<li class="children">')) {
         if (!isOrder[i]) {
           // 第一个子li
@@ -211,12 +182,12 @@ function parseEl() {
             htmlArr[i - 1] = htmlArr[i - 1].replace(`<li>`, `<li class="father">`);
             htmlArr[i] = `<ul class="childrenUl">${htmlArr[i]}`;
           }
-          // 最后一个子li，下边还有父li
+          // 最后一个子li，但下边还有父li
           if (htmlArr[i + 1] && htmlArr[i + 1].startsWith('<li>')) {
             htmlArr[i] = `${htmlArr[i]}</ul>`;
           }
           // 最后一个子li，也是最后一个li
-          else if (!htmlArr[i + 1] || !htmlArr[i + 1].startsWith('<li')) {
+          if (!htmlArr[i + 1] || !htmlArr[i + 1].startsWith('<li')) {
             htmlArr[i] = `${htmlArr[i]}</ul></ul>`;
           }
         }
@@ -232,7 +203,7 @@ function parseEl() {
           if (htmlArr[i + 1] && htmlArr[i + 1].startsWith('<li>')) {
             htmlArr[i] = `${htmlArr[i]}</ol>`;
           }
-          else if (!htmlArr[i + 1] || !htmlArr[i + 1].startsWith('<li')) {
+          if (!htmlArr[i + 1] || !htmlArr[i + 1].startsWith('<li')) {
             htmlArr[i] = `${htmlArr[i]}</ol></ol>`;
           }
         }
@@ -248,28 +219,19 @@ function parseEl() {
 
 function dealChildren() {
   // 处理嵌套的li
-  const fatherUl = contentWrapper.getElementsByTagName("ul");
-  const fatherOl = contentWrapper.getElementsByTagName("ol");
-  for (let i = 0; i < fatherUl.length; i++) {
-    let liArr = fatherUl[i].getElementsByTagName("li");
-    let childrenUl = fatherUl[i].getElementsByClassName("childrenUl");
-    let k = 0;
-    for (let j = 0; j < liArr.length; j++) {
-      if (liArr[j].className === "father") {
-        if (childrenUl[k]) {
-          liArr[j].appendChild(childrenUl[k++]);
-        }
-      }
-    }
-  }
-  for (let i = 0; i < fatherOl.length; i++) {
-    let liArr = fatherOl[i].getElementsByTagName("li");
-    let childrenOl = fatherOl[i].getElementsByClassName("childrenOl");
-    let k = 0;
-    for (let j = 0; j < liArr.length; j++) {
-      if (liArr[j].className === "father") {
-        if (childrenOl[k]) {
-          liArr[j].appendChild(childrenOl[k++]);
+  let dealObj = new Object;
+  dealObj.fatherUl = contentWrapper.getElementsByTagName("ul");
+  dealObj.fatherOl = contentWrapper.getElementsByTagName("ol");
+  for (key in dealObj) {
+    for (let i = 0; i < dealObj[key].length; i++) {
+      let liArr = dealObj[key][i].getElementsByTagName("li");
+      let childrenUl = dealObj[key][i].getElementsByClassName("childrenUl");
+      let k = 0;
+      for (let j = 0; j < liArr.length; j++) {
+        if (liArr[j].className === "father") {
+          if (childrenUl[k]) {
+            liArr[j].appendChild(childrenUl[k++]);
+          }
         }
       }
     }
@@ -278,8 +240,7 @@ function dealChildren() {
 
 // 更替preview中的内容
 function setValue() {
-  let htmlStr = parseEl();
-  contentWrapper.innerHTML = htmlStr;
+  contentWrapper.innerHTML = parseEl();
   dealChildren();
 }
 
@@ -310,19 +271,21 @@ function prevTab(event) {
   }
 }
 
-// 存储title
-function saveTitle() {
-  localStorage.setItem('title', ip.value);
-}
-
-// 下载，明天理解此代码
+// 下载
 function download(content, filename) {
-  var eleLink = document.createElement('a');
+  // 创建隐藏的可下载链接
+  let eleLink = document.createElement('a');
+  // 设置download属性，属性值为文件名
   eleLink.download = filename;
-  eleLink.style.display = 'none';
-  var blob = new Blob([content]);
+  // eleLink.style.display = 'none';
+
+  // 字符内容转变成blob地址
+  let blob = new Blob([content]);
+  // 得到URL对象，赋给href属性
   eleLink.href = URL.createObjectURL(blob);
-  document.body.appendChild(eleLink);
+  // document.body.appendChild(eleLink);
+
+  // 模拟a标签触发点击事件，与download属性配合完成下载
   eleLink.click();
-  document.body.removeChild(eleLink);
+  // document.body.removeChild(eleLink);
 };
