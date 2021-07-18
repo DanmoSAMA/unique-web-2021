@@ -26,11 +26,18 @@ const ip = document.getElementById("IP");
 const downloadBtn = document.getElementById("download");
 const contentWrapper = document.getElementById("content-wrapper");
 
-const titleReg = /^\s{0,3}#{1,6}\s/; const sharpReg = /^\s{0,3}#{1,6}/;
-const enterReg = /\n$/; const italicReg = /\*\S.*\*/;
-const boldReg = /\*{2}\S.*\*{2}/; const hyperReg = /\[.+\]\(.+\)/;
-const liReg = /^[\*\-]\s/; const liChildrenReg = /^\s{4}[\*\-]\s/;
-const numReg = /^[0-9]{1,}\. /; const numChildenReg = /^\s{4}[0-9]{1,}\. /;
+const transReg = /\\\\/g;
+// console.log('\\\\\\\\\\\\'.replace(transReg, "\\"));
+const titleReg = /^\s{0,3}#{1,6}\s/; 
+const sharpReg = /^\s{0,3}#{1,6}/;
+const enterReg = /\n$/; 
+const italicReg = /\*\S.*\*/;
+const boldReg = /\*{2}\S.*\*{2}/; 
+const hyperReg = /\[.+\]\(.+\)/;
+const liReg = /^[\*\-]\s/; 
+const liChildrenReg = /^\s{4}[\*\-]\s/;
+const numReg = /^[0-9]{1,}\. /; 
+const numChildenReg = /^\s{4}[0-9]{1,}\. /;
 
 ta.addEventListener('input', setValue);
 ta.addEventListener('keydown', prevTab);
@@ -63,7 +70,9 @@ function parseEl() {
   localStorage.setItem('htmlStr', htmlStr);
 
   for (let i = 0; i < htmlArr.length; i++) {
-    // 标题
+    // 转义
+    htmlArr[i] = htmlArr[i].replace(transReg, "\\");
+
     if (titleReg.test(htmlArr[i])) {
       let titleRegArr = new Array;
       for (let i = 1; i <= 6; i++) {
@@ -106,15 +115,22 @@ function parseEl() {
     }
     // 斜体、粗体
     else if (italicReg.test(htmlArr[i]) || boldReg.test(htmlArr[i])) {
-      const starReg1 = /\*/;
-      const starReg2 = /\*{2}/;
-      while (starReg2.test(htmlArr[i])) {
-        htmlArr[i] = htmlArr[i].replace(/\*{2}/, "<b>");
-        htmlArr[i] = htmlArr[i].replace(/\*{2}/, "</b>");
+      const transStarRegArr = [/\\\*/, /\\\*\*/];
+      const starRegArr = [/\*/, /\*{2}/];
+      // 有bug
+      while (transStarRegArr[0].test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(transStarRegArr[0], "");
       }
-      while (starReg1.test(htmlArr[i])) {
-        htmlArr[i] = htmlArr[i].replace(/\*{1}/, "<i>");
-        htmlArr[i] = htmlArr[i].replace(/\*{1}/, "</i>");
+      while (transStarRegArr[1].test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(transStarRegArr[1], "");
+      }
+      while (starRegArr[1].test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(starRegArr[1], "<b>");
+        htmlArr[i] = htmlArr[i].replace(starRegArr[1], "</b>");
+      }
+      while (starRegArr[0].test(htmlArr[i])) {
+        htmlArr[i] = htmlArr[i].replace(starRegArr[0], "<i>");
+        htmlArr[i] = htmlArr[i].replace(starRegArr[0], "</i>");
       }
       htmlArr[i] += '<br>';
     }
@@ -127,21 +143,25 @@ function parseEl() {
       let infoStr = infoArr[0].replace(/\[/, "").replace(/\]/, "");
       let urlStr = urlArr[0].replace(/\(/, "").replace(/\)/, "");
       htmlArr[i] = htmlArr[i].replace(hyperRegArr[2], `<a href='${urlStr}'>${infoStr}</a>`);
+      htmlArr[i] = `${htmlArr[i]}<br>`
     }
     else if (htmlArr[i] === "") {
       htmlArr[i] = '<br/>';
     }
     else {
-      // 不转义时#的解析方式：
+      // #的解析方式：
       if (sharpReg.test(htmlArr[i])) {
         const sharpRegArr = [/^\s{0,3}#{1,6}[^#]+/, /^\s{0,3}#{7,}/, /#{1,6}/];
         if (!sharpRegArr[0].test(htmlArr[i]) && !sharpRegArr[1].test(htmlArr[i])) {
           htmlArr[i] = htmlArr[i].replace(sharpRegArr[2], "");
         }
       }
-      // 转义
+      // 标题转义
       else if (htmlArr[i].startsWith('\\')) {
-        htmlArr[i] = htmlArr[i].replace(/\\/, "");
+        const transTitleReg = /^\\\s*#/;
+        if (transTitleReg.test(htmlArr[i])) {
+          htmlArr[i] = htmlArr[i].replace(transTitleReg, "#");
+        }
       }
       htmlArr[i] = `<p>${htmlArr[i]}</p>`;
     }
@@ -226,11 +246,15 @@ function dealChildren() {
     for (let i = 0; i < dealObj[key].length; i++) {
       let liArr = dealObj[key][i].getElementsByTagName("li");
       let childrenUl = dealObj[key][i].getElementsByClassName("childrenUl");
-      let k = 0;
+      let childrenOl = dealObj[key][i].getElementsByClassName("childrenOl");
+      let k = 0, l = 0;
       for (let j = 0; j < liArr.length; j++) {
         if (liArr[j].className === "father") {
           if (childrenUl[k]) {
             liArr[j].appendChild(childrenUl[k++]);
+          }
+          if (childrenOl[l]) {
+            liArr[j].appendChild(childrenOl[l++]);
           }
         }
       }
