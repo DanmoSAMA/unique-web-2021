@@ -27,25 +27,34 @@ const downloadBtn = document.getElementById("download");
 const contentWrapper = document.getElementById("content-wrapper");
 
 const transReg = /\\\\/g;
-// console.log('\\\\\\\\\\\\'.replace(transReg, "\\"));
-const titleReg = /^\s{0,3}#{1,6}\s/; 
+const titleReg = /^\s{0,3}#{1,6}\s/;
 const sharpReg = /^\s{0,3}#{1,6}/;
-const enterReg = /\n$/; 
+const transSharpReg = /\\(#+\s*)+/; // bug
+const enterReg = /\n$/;
 const italicReg = /\*\S.*\*/;
-const boldReg = /\*{2}\S.*\*{2}/; 
-const hyperReg = /\[.+\]\(.+\)/;
-const liReg = /^[\*\-]\s/; 
+const boldReg = /\*{2}\S.*\*{2}/;
+const hyperReg = /\[.+\]\(.+\)/g;
+const liReg = /^[\*\-]\s/;
 const liChildrenReg = /^\s{4}[\*\-]\s/;
-const numReg = /^[0-9]{1,}\. /; 
+const numReg = /^[0-9]{1,}\. /;
 const numChildenReg = /^\s{4}[0-9]{1,}\. /;
+const deviderReg = /^\s{0,3}[\*\-]{1,}\s{0,}[\*\-]{1,}\s{0,}[\*\-]{1,}\s{0,}/;
+const bracketRegArr = [/\(/g, /\)/g, /\\\(/g, /\\\)/g, /\[/g, /\]/g, /\\\[/g, /\\\]/g]; //
 
 ta.addEventListener('input', setValue);
 ta.addEventListener('keydown', prevTab);
 ip.addEventListener('input', () => {
   localStorage.setItem('title', ip.value);
 }); // 保存标题
+
 downloadBtn.addEventListener('click', () => {
-  download(htmlStr, `${localStorage.getItem('title')}.md`);
+  let currentTitle = localStorage.getItem('title');
+  if (currentTitle !== "") {
+    download(htmlStr, `${currentTitle}.md`);
+  }
+  else {
+    download(htmlStr, `default.md`);
+  }
 }); // 下载
 
 // 读取localStorage
@@ -70,9 +79,7 @@ function parseEl() {
   localStorage.setItem('htmlStr', htmlStr);
 
   for (let i = 0; i < htmlArr.length; i++) {
-    // 转义
-    htmlArr[i] = htmlArr[i].replace(transReg, "\\");
-
+    // 标题
     if (titleReg.test(htmlArr[i])) {
       let titleRegArr = new Array;
       for (let i = 1; i <= 6; i++) {
@@ -80,10 +87,14 @@ function parseEl() {
       }
       titleRegArr.forEach((item, index) => {
         if (titleRegArr[index].test(htmlArr[i])) {
-          htmlArr[i] = `<h${index}>${htmlArr[i]}</h${index}>`;
           htmlArr[i] = htmlArr[i].replace(titleRegArr[index], "");
+          htmlArr[i] = `<h${index}>${htmlArr[i]}</h${index}>`;
         }
       })
+    }
+    // 分割线
+    else if (deviderReg.test(htmlArr[i])) {
+      htmlArr[i] = `<hr>`;
     }
     // 无序列表
     else if (liReg.test(htmlArr[i]) || liChildrenReg.test(htmlArr[i])) {
@@ -109,15 +120,11 @@ function parseEl() {
       }
       isOrder[i] = true;
     }
-    // 分割线
-    else if (htmlArr[i].startsWith('***')) {
-      htmlArr[i] = `<hr>`;
-    }
     // 斜体、粗体
     else if (italicReg.test(htmlArr[i]) || boldReg.test(htmlArr[i])) {
       const transStarRegArr = [/\\\*/, /\\\*\*/];
       const starRegArr = [/\*/, /\*{2}/];
-      // 有bug
+      // bug
       while (transStarRegArr[0].test(htmlArr[i])) {
         htmlArr[i] = htmlArr[i].replace(transStarRegArr[0], "");
       }
@@ -136,20 +143,28 @@ function parseEl() {
     }
     // 超链接
     else if (hyperReg.test(htmlArr[i])) {
-      const hyperRegArr = [/\[.+\]/, /\(.+\)/, /\[.+\]\(.+\)/];
+      const hyperRegArr = [/\[[^\[^\]]+\]/g, /\([^\[^\)]+\)/g, /\[[^\[]+\]\([^\)]+\)/];
       let infoArr = htmlArr[i].match(hyperRegArr[0]);
       let urlArr = htmlArr[i].match(hyperRegArr[1]);
+      let infoStrArr = new Array;
+      let urlStrArr = new Array;
 
-      let infoStr = infoArr[0].replace(/\[/, "").replace(/\]/, "");
-      let urlStr = urlArr[0].replace(/\(/, "").replace(/\)/, "");
-      htmlArr[i] = htmlArr[i].replace(hyperRegArr[2], `<a href='${urlStr}'>${infoStr}</a>`);
+      infoArr.forEach((info, i) => {
+        infoStrArr[i] = info.replace(/\[/, "").replace(/\]/, "");
+      })
+      urlArr.forEach((url, i) => {
+        urlStrArr[i] = url.replace(/\(/, "").replace(/\)/, "");
+      })
+      infoStrArr.forEach((info, index) => {
+        htmlArr[i] = htmlArr[i].replace(hyperRegArr[2], `<a href='${urlStrArr[index]}'>${infoStrArr[index]}</a>`);
+      })
       htmlArr[i] = `${htmlArr[i]}<br>`
     }
     else if (htmlArr[i] === "") {
       htmlArr[i] = '<br/>';
     }
     else {
-      // #的解析方式：
+      // 井号
       if (sharpReg.test(htmlArr[i])) {
         const sharpRegArr = [/^\s{0,3}#{1,6}[^#]+/, /^\s{0,3}#{7,}/, /#{1,6}/];
         if (!sharpRegArr[0].test(htmlArr[i]) && !sharpRegArr[1].test(htmlArr[i])) {
@@ -157,14 +172,19 @@ function parseEl() {
         }
       }
       // 标题转义
-      else if (htmlArr[i].startsWith('\\')) {
-        const transTitleReg = /^\\\s*#/;
-        if (transTitleReg.test(htmlArr[i])) {
-          htmlArr[i] = htmlArr[i].replace(transTitleReg, "#");
-        }
+      else if (transSharpReg.test(htmlArr[i])) {
+        // bug
+        console.log(htmlArr[i]);
+        htmlArr[i] = htmlArr[i].replace(transSharpReg, "#");
       }
       htmlArr[i] = `<p>${htmlArr[i]}</p>`;
     }
+    // 转义
+    htmlArr[i] = htmlArr[i].replace(bracketRegArr[2], "(");
+    htmlArr[i] = htmlArr[i].replace(bracketRegArr[3], ")");
+    htmlArr[i] = htmlArr[i].replace(bracketRegArr[6], "[");
+    htmlArr[i] = htmlArr[i].replace(bracketRegArr[7], "]");
+    htmlArr[i] = htmlArr[i].replace(transReg, "\\");
   }
 
   // 将li标签放入ul或ol
@@ -274,20 +294,30 @@ function prevTab(event) {
 
   event.preventDefault();
 
+  // 元素中当前选中文本的起始和结束位置
   let start = this.selectionStart;
   let end = this.selectionEnd;
 
+  // 当前未选中文本，直接插入空格
   if (start === end) {
     document.execCommand('insertText', false, "    ");
   }
+  // '123456789'选中34，按下tab
   else {
     let strBefore = this.value.slice(0, start);
+    console.log(strBefore);       // '12'
     let curLineStart = strBefore.includes('\n') ? strBefore.lastIndexOf('\n') + 1 : 0;
+    console.log(curLineStart);    // 0
     let strBetween = this.value.slice(curLineStart, end + 1);
+    console.log(strBetween);      // '12345'
     let newStr = "    " + strBetween.replace(/\n/g, '\n  ');
+    console.log(newStr);          // '    12345'
     let lineBreakCount = strBetween.split('\n').length;
+    console.log(lineBreakCount);  // 1
     let newStart = start + 2;
+    console.log(newStart);        // 4
     let newEnd = end + (lineBreakCount + 1) * 2;
+    console.log(newEnd);          // 8
 
     this.setSelectionRange(curLineStart, end);
     document.execCommand("insertText", false, newStr);

@@ -1,0 +1,72 @@
+#intro{
+  padding: 80px 40px 80px 80px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  /* grid-template-columns: 48% 48%; */
+  /* gap: 4%; */
+}
+#intro-img{
+  width: 100%;
+  position: relative;
+}
+#intro-img img{
+  /* width: 92%; */
+  cursor: pointer;
+  /* transition: height .2s, width .2s; 不需要*/
+  position: relative;
+  /* top: 16px; */
+}
+#intro-text {
+  position: relative;
+}
+#intro-text > h2{
+  font-family: "Big Noodle Too,impact,sans-serif";
+  /* font-size: 36px; */
+  font-style: italic;
+  color: #4C535D;
+  position: absolute;
+  /* top: 80px; */
+}
+#intro-text > p{
+  position: absolute;
+  /* font-size: 20px; */
+  color: #4C535D;
+  top: 162px;
+  line-height: 30px;
+  font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+  /* letter-spacing: 0.38px; */
+}
+
+@media only screen and (min-width: 1279px){
+  #intro{
+    grid-template-columns: 48% 48%;
+    gap: 4%;
+  }
+  #intro-img img{
+    width: 92%;
+    top: 16px;
+  }
+  #intro-text > h2{
+    font-size: 36px;
+    top: 80px;
+  }
+  #intro-text > p{
+    font-size: 20px;
+    letter-spacing: 0.38px;
+  }
+}
+@media only screen and (max-width: 1279px) and (min-width: 640px){
+  #intro{
+    padding: 0 40px;
+    margin: 0 auto;
+    /* grid-template-rows: ; */
+  }
+  #intro-img img{
+    width: 75%;
+    margin-left: 12.5%;
+  }
+}
+@media only screen and (max-width: 640px){
+
+}

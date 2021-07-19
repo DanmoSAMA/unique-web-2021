@@ -1,0 +1,116 @@
+#about{
+  width: 100%;
+  position: relative;
+}
+#about h1{
+  font-family: "Big Noodle Too,impact,sans-serif";
+  text-align: center;
+  font-style: italic;
+  color: #4C535D;
+}
+@media only screen and (min-width: 1279px){
+  #about{
+    height: 150px;
+    padding: 90px 0 20px 0;
+    background: url(../imgs/bg-desktop-a551c87052.jpg);
+  }
+  #about h1{
+    font-size: 55px;
+    margin-top: 40px;
+  }
+  #about-bar{
+    display: flex;
+  }
+  #about-logo{
+    display: inline-block;
+    min-width: 54px;
+    height: 50px;
+    background-color: #353B41;
+    position: relative;
+  }
+  #about-logo svg{
+    width: 40px;
+    height: 37px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 6.5px auto;
+  }
+  #about-bar{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    line-height: 50px;
+    font-family: FuturaNo2D, "Century Gothic", AppleGothic, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #4C535D;
+    position: absolute;
+    top: 40px;
+  }
+  #about-bar .devide-line{
+    background-color: #F2F1ED;
+    height: 50px;
+  }
+  #about-bar .devide-line > span{
+    display: inline-block;
+    position: relative;
+    width: 1px;
+    height: 30px;
+    background-color: #E5E3DC;
+    top: 10px;
+  }
+  #about-bar > .about-bar-item{
+    background-color: #F2F1ED;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: .3s color;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+  }
+  #about-bar > .about-bar-item > i{
+    float: left;
+  }
+  #about-bar #occupy{
+    width: 32%;
+    background-color: #F2F1ED;
+  }
+  #about-bar #buy{
+    min-width: 134.225px;
+    font-size: 20px;
+    background-color: #E77327;
+    color: #fff;
+    padding: 0;
+    transition: .1s background-color;
+  }
+  #about-bar #buy:hover{
+    border-bottom: none;
+    background-color: #E66512;
+  }
+  #about-bar > .about-bar-item > i{
+    position: relative;
+    left: 3px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  #about-bar > div.selected{
+    border-bottom: 3.5px solid #E66512;
+  }
+  #about-bar > .about-bar-item:hover{
+    border-bottom: 3.5px solid #E66512;
+    color: #E66512;
+  }
+}
+
+@media only screen and (max-width: 1279px){
+  #about-bar{
+    display: none;
+  }
+  #about h1{
+    font-size: 50px;
+    padding: 45px 0 30px 0;
+    background: url(../imgs/bg-desktop-a551c87052.jpg);
+  }
+}
