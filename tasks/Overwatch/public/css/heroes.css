@@ -1,0 +1,69 @@
+#heroes-wrapper{
+  width: 100%;
+  box-sizing: border-box;
+  height: 712px;
+  padding: 50px 10px;
+  background-image: url('../imgs/About-Heroes-Background-Desktop-c13ed85c90.jpg');
+}
+#heroes-msg{
+  width: 100%;
+  height: 200px;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  row-gap: 10px;
+  color: #fff;
+  justify-content: space-around;
+}
+#heroes-title{
+  font-family: "Big Noodle Too,impact,sans-serif";
+  font-style: italic;
+  font-size: 36px;
+  line-height: 68px;
+  text-align: center;
+}
+#heroes-text{
+  text-align: center;
+  max-width: 760px;
+  height: 120px;
+  line-height: 30px;
+  font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+  font-size: 21px;
+  letter-spacing: 0.35px;
+}
+
+@media only screen and (max-width: 1280px){
+  #heroes-wrapper{
+    height: 593px;
+  }
+  #heroes-title{
+    font-size: 30px;
+  }
+  #heroes-text{
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media only screen and (max-width: 960px){
+  #heroes-wrapper{
+    height: 612px;
+  }
+}
+
+@media only screen and (max-width: 640px){
+  #heroes-wrapper{
+    height: 554px;
+  }
+  #heroes-msg{
+    row-gap: 0;
+  }
+  #heroes-title{
+    font-size: 25px;
+    line-height: 36px;
+    height: auto;
+  }
+  #heroes-text{
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

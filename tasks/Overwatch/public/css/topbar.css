@@ -77,9 +77,13 @@
   #topbar-mobile > i{
     font-size: 24px;
     color: #41AEFF;
+    cursor: pointer;
   }
   #topbar-mobile > i:nth-child(1){
     color: #363C42;
+  }
+  #topbar-mobile > i:nth-child(3):hover{
+    color: #00C6FF;
   }
   #topbar-mobile-logo{
     display: inline-block;

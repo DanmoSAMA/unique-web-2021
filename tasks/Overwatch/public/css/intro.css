@@ -1,72 +1,161 @@
-#intro{
-  padding: 80px 40px 80px 80px;
+#intro-wrapper{
   width: 100%;
   box-sizing: border-box;
+}
+#intro{
   display: grid;
-  /* grid-template-columns: 48% 48%; */
-  /* gap: 4%; */
+  padding: 0 40px;
 }
-#intro-img{
-  width: 100%;
+#intro-trailer{
+  overflow: hidden;
   position: relative;
+  height: 98%;
 }
-#intro-img img{
-  /* width: 92%; */
+#intro-trailer > img{
   cursor: pointer;
-  /* transition: height .2s, width .2s; 不需要*/
-  position: relative;
-  /* top: 16px; */
+  transition: 0.2s all;
+  width: 100%;
 }
-#intro-text {
-  position: relative;
+#intro-trailer > img:hover{
+  transform: scale(1.02);
 }
-#intro-text > h2{
+#intro-trailer > #play-btn{
+  display: flex;
+  width: 84.69px;
+  height: 33px;
+  line-height: 33px;
+  background-color: #F2F1ED;
+  position: absolute;
+  border-radius: 3px;
+  bottom: 1px;
+  left: 1px;
+  cursor: pointer;
+}
+#intro-trailer > #play-btn > i{
+  font-size: 39px;
+  position: relative;
+  left: -3.5px;
+  color: #FF8900;
+  transition: .3s color;
+}
+#intro-trailer > #play-btn > time{
+  color: #4B535D;
+  font-weight: bold;
+  font-size: 15px;
+}
+#intro-trailer:hover #play-btn > i{
+  color: #E66700;
+}
+#intro-title{
   font-family: "Big Noodle Too,impact,sans-serif";
-  /* font-size: 36px; */
   font-style: italic;
   color: #4C535D;
-  position: absolute;
-  /* top: 80px; */
 }
-#intro-text > p{
-  position: absolute;
-  /* font-size: 20px; */
+#intro-description{
   color: #4C535D;
-  top: 162px;
   line-height: 30px;
   font-family: Roboto,Helvetica Neue,Arial,sans-serif;
-  /* letter-spacing: 0.38px; */
+  letter-spacing: 0.38px;
 }
 
-@media only screen and (min-width: 1279px){
+@media only screen and (min-width: 1280px){
+  #intro-wrapper{
+    padding: 80px 40px;
+  }
   #intro{
-    grid-template-columns: 48% 48%;
-    gap: 4%;
+    grid-template-columns: 50% 50%;
+    gap: 50px;
+    row-gap: 20px;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: 
+    "trailer title"
+    "trailer description";
   }
-  #intro-img img{
-    width: 92%;
-    top: 16px;
+  #intro-trailer{
+    grid-area: trailer;
   }
-  #intro-text > h2{
+  #intro-title{
+    grid-area: title;
     font-size: 36px;
-    top: 80px;
+    align-self: end;
   }
-  #intro-text > p{
+  #intro-description{
+    grid-area: description;
     font-size: 20px;
-    letter-spacing: 0.38px;
   }
 }
-@media only screen and (max-width: 1279px) and (min-width: 640px){
+
+@media only screen and (max-width: 959px){
+  #intro-trailer > #play-btn{
+    width: 57.73px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  #intro-trailer > #play-btn > i{
+    font-size: 23px;
+    left: -1px;
+    top: 1px;
+  }
+  #intro-trailer > #play-btn > time{
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 1280px){
+  #intro-wrapper{
+    padding: 50px 10px;
+  }
   #intro{
     padding: 0 40px;
+    width: 74%;
     margin: 0 auto;
-    /* grid-template-rows: ; */
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto);
+    row-gap: 20px;
   }
-  #intro-img img{
-    width: 75%;
-    margin-left: 12.5%;
+  #intro-trailer{
+    width: 88%;
+    margin: 0 auto;
+  }
+  #intro-trailer > img{
+    width: 100%;
+  }
+  #intro-title{
+    font-size: 32px;
+    text-align: center;
+    height: auto;
+    line-height: 50px;
+  }
+  #intro-description{
+    font-size: 20px;
+    height: auto;
+    text-align: center;
   }
 }
 @media only screen and (max-width: 640px){
-
+  #intro-wrapper{
+    padding: 50px 0;
+  }
+  #intro{
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto);
+    row-gap: 20px;
+  }
+  #intro-title{
+    font-size: 22px;
+    text-align: left;
+    height: 50px;
+    line-height: 22px;
+  }
+  #intro-description{
+    font-size: 16px;
+    height: auto;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+  }
 }

@@ -1,0 +1,111 @@
+#role-wrapper{
+  width: 100%;
+  padding: 80px 0;
+  background-color: #F2F1ED;
+}
+#role{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 40px;
+}
+#role-ul{
+  display: flex;
+  width: 100%;
+  padding: 75px 0;
+}
+#role-title{
+  font-family: "Big Noodle Too,impact,sans-serif";
+  font-style: italic;
+  text-align: center;
+  color: #4B535D;
+  font-size: 40px;
+}
+.role-li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 33.3%;
+}
+.role-li > svg{
+  min-width: 170px;
+  min-height: 170px;
+  max-width: 170px;
+  max-height: 170px;
+  margin: 0 auto;
+}
+.role-type{
+  font-size: 20px;
+  color: #4B535D;
+  text-align: center;
+}
+.role-info{
+  color: #222529;
+  font-size: 18px;
+  font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+  line-height: 24px;
+  padding: 20px 0;
+}
+
+@media only screen and (max-width: 1280px){
+  #role{
+    max-width: 750px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+  #role-ul{
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .role-li{
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .role-li > svg{
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 20px;
+  }
+  .role-type{
+    text-align: left; 
+    font-size: 19px;
+  }
+  .role-info{
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 640px){
+  #role-wrapper{
+    padding: 20px 0;
+  }
+  #role{
+    max-width: 750px;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #role-title{
+    font-size: 20px;
+    text-align: left;
+  }
+  .role-li > svg{
+    min-width: 65px;
+    min-height: 65px;
+    max-width: 65px;
+    max-height: 65px;
+    margin-right: 10px;
+  }
+  .role-type{
+    font-size: 16px;
+  }
+  .role-info{
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
