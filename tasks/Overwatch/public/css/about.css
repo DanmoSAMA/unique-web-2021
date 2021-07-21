@@ -8,7 +8,7 @@
   font-style: italic;
   color: #4C535D;
 }
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1279px){
   #about{
     height: 150px;
     padding: 90px 0 20px 0;
@@ -74,7 +74,7 @@
     float: left;
   }
   #about-bar #occupy{
-    width: 32%;
+    width: 40%;
     background-color: #F2F1ED;
   }
   #about-bar #buy{
@@ -104,7 +104,7 @@
   }
 }
 
-@media only screen and (max-width: 1280px){
+@media only screen and (max-width: 1279px){
   #about-bar{
     display: none;
   }
@@ -117,7 +117,7 @@
   }
 }
 
-@media only screen and (max-width: 640px){
+@media only screen and (max-width: 639px){
   #about h1{
     height: 32px;
     line-height: 32px;

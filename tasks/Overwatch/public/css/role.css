@@ -48,7 +48,7 @@
   padding: 20px 0;
 }
 
-@media only screen and (max-width: 1280px){
+@media only screen and (max-width: 1279px){
   #role{
     max-width: 750px;
     padding: 0 40px;
@@ -80,7 +80,7 @@
     font-size: 16px;
   }
 }
-@media only screen and (max-width: 640px){
+@media only screen and (max-width: 639px){
   #role-wrapper{
     padding: 20px 0;
   }

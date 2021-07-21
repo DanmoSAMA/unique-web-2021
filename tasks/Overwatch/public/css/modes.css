@@ -1,0 +1,221 @@
+#modes-wrapper{
+  width: 100%;
+  padding: 80px 0;
+  background-image: url('../imgs/modes-bg-917e990cff.jpg');
+  background-size: cover;
+  background-position: center;
+}
+#modes{
+  box-sizing: border-box;
+  width: 88%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+#modes-header{
+  max-width: 630px;
+  padding: 0 60px;
+  margin: 0 auto;
+  text-align: center;
+}
+#modes-title{
+  line-height: 60px;
+  font-family: "Big Noodle Too,impact,sans-serif";
+  font-style: italic;
+  font-size: 44px;
+  color: #4B535D;
+}
+#modes-description{
+  height: 90px;
+  line-height: 30px;
+  font-size: 20px;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.35px;
+  margin-top: 12.6px;
+}
+#modes-cards{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 10px 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.modes-cardItem{
+  display: grid;
+  background-color: #fff;
+  width: 360px;
+  height: 502.6px;
+  margin: 20px;
+  gap: 20px;
+  border-radius: 2px;
+  grid-template-rows: auto 50px 1fr;
+  justify-items: center;
+}
+.modes-cardItem svg{
+  width: 50px;
+  height: 50px;
+}
+.modes-cardItem svg path,
+.modes-cardItem svg g{
+  fill: #4B535D;
+}
+.modes-cards-content{
+  padding: 0 30px 30px 30px;
+}
+.modes-cards-title{
+  font-size: 21px;
+  text-align: center;
+  height: 27px;
+  line-height: 27px;
+  color: #4B535D;
+}
+.modes-cards-description{
+  line-height: 24px;
+  color: #333;
+  font-size: 15.5px;
+  margin-top: 9.6px;
+}
+#modes-cards-btn{
+  display: block;
+  background-color: #FF9C00;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  height: 27px;
+  line-height: 27px;
+  padding: 6px 21px;
+  margin-top: 15px;
+  transition: .1s background-color, .1s font-size, .1s color;
+}
+#modes-cards-btn:hover{
+  background-color: #F7AF30;
+}
+
+@media only screen and (max-width: 1279px){
+  #modes{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 40px;
+  }
+  #modes-title{
+    font-size: 35px;
+    line-height: 50px;
+  }
+  #modes-description{
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .modes-cards-title{
+    font-size: 18px;
+    height: 25px;
+    line-height: 25px;
+  }
+  .modes-cards-description{
+    line-height: 18px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+  }
+  #modes-cards-btn{
+    font-size: 14px;
+    height: 16px;
+    line-height: 16px;
+    padding: 6px 21px;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 959px){
+  #modes-wrapper{
+    padding: 50px 0;
+  }
+  #modes{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 40px;
+  }
+  #modes-header{
+    width: 100%;
+    padding: 0 10px;
+  }
+  .modes-cardItem > img{
+    display: none;
+  }
+  .modes-cardItem{
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    gap: 0;
+    justify-items: left;
+    grid-template-columns: 50px auto;
+    grid-template-rows: auto;
+    gap: 15px;
+  }  
+  .modes-cards-content{
+    width: 100%;
+    padding: 0;
+  }
+  .modes-cards-title{
+    text-align: left;
+  }
+  .modes-cardItem svg{
+    width: 34px;
+    height: 34px;
+    padding: 8px;
+    background-color: #fff;
+  }
+  #modes-cards-btn{
+    background-color: transparent;
+    color: #FF9C00;
+    text-align: left;
+    padding: 0;
+    margin: 5px 0 0 0;
+  }
+  #modes-cards-btn:hover{
+    background-color: transparent;
+    color: #F7AF30;
+  }
+}
+
+@media only screen and (max-width: 639px){
+  #modes-wrapper{
+    padding: 30px 0;
+  }
+  #modes{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+  }
+  #modes-header{
+    padding: 0;
+    text-align: left;
+  }
+  #modes-title{
+    line-height: 30px;
+    font-size: 22px;
+  }
+  #modes-description{
+    height: auto;
+    width: auto;
+    line-height: 20px;
+    font-size: 16px;
+    letter-spacing: 0.35px;
+    margin-top: 9.6px;
+  }
+  .modes-cards-content{
+    width: 100%;
+    padding: 0;
+  }
+  .modes-cards-title{
+    font-size: 17px;
+    height: 21px;
+    line-height: 21px;
+  }
+  .modes-cards-description{
+    line-height: 18px;
+    font-size: 11px;
+    margin-top: 7.2px;
+  }
+}

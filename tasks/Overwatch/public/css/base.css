@@ -11,3 +11,47 @@ ul li{
   padding: 0px;
   margin: 0px;
 }
+
+/*播放按钮*/
+.play-btn{
+  display: flex;
+  width: 84.69px;
+  height: 33px;
+  line-height: 33px;
+  background-color: #F2F1ED;
+  position: absolute;
+  border-radius: 3px;
+  bottom: 1px;
+  left: 1px;
+  cursor: pointer;
+}
+.play-btn > i{
+  font-size: 39px;
+  position: relative;
+  left: -3.5px;
+  color: #FF8900;
+  transition: .3s color;
+}
+.play-btn > time{
+  color: #4B535D;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 959px){
+  .play-btn{
+    width: 57.73px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .play-btn > i{
+    font-size: 23px;
+    left: -1px;
+    top: 1px;
+  }
+  .play-btn > time{
+    font-size: 13px;
+  }
+}

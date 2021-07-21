@@ -55,7 +55,7 @@
   height: 50px;
 }
 
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1279px){
   #crossPlay-content{
     background-size: cover;
     background-position: right;
@@ -74,7 +74,7 @@
   }
 }
 
-@media only screen and (max-width: 1280px){
+@media only screen and (max-width: 1279px){
   #crossPlay-content{
     background-size: 320%;
     background-repeat: no-repeat;
@@ -124,7 +124,7 @@
   }
 }
 
-@media only screen and (max-width: 640px){
+@media only screen and (max-width: 639px){
   #crossPlay-wrapper{
     display: flex;
     flex-wrap: wrap;
