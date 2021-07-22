@@ -1,71 +1,72 @@
-#intro-wrapper{
+#intro-wrapper {
   width: 100%;
   box-sizing: border-box;
 }
-#intro{
+#intro {
   display: grid;
   padding: 0 40px;
 }
-#intro-trailer{
+#intro-trailer {
   overflow: hidden;
   position: relative;
   height: 98%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 }
-#intro-trailer > img{
+#intro-trailer > img {
   cursor: pointer;
   transition: 0.2s all;
   width: 100%;
 }
-#intro-trailer > img:hover{
+#intro-trailer > img:hover {
   transform: scale(1.02);
 }
-#intro-trailer:hover .play-btn > i{
-  color: #E66700;
+#intro-trailer:hover .play-btn > i {
+  color: #e66700;
 }
-#intro-title{
+#intro-title {
   font-family: "Big Noodle Too,impact,sans-serif";
   font-style: italic;
-  color: #4C535D;
+  color: #4c535d;
 }
-#intro-description{
-  color: #4C535D;
+#intro-description {
+  color: #4c535d;
   line-height: 30px;
-  font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   letter-spacing: 0.38px;
 }
 
-@media only screen and (min-width: 1279px){
-  #intro-wrapper{
+@media only screen and (min-width: 1279px) {
+  #intro-wrapper {
     padding: 80px 40px;
   }
-  #intro{
+  #intro {
     grid-template-columns: 50% 50%;
     gap: 50px;
     row-gap: 20px;
     grid-template-rows: repeat(2, auto);
-    grid-template-areas: 
-    "trailer title"
-    "trailer description";
+    grid-template-areas:
+      "trailer title"
+      "trailer description";
   }
-  #intro-trailer{
+  #intro-trailer {
     grid-area: trailer;
   }
-  #intro-title{
+  #intro-title {
     grid-area: title;
     font-size: 36px;
     align-self: end;
   }
-  #intro-description{
+  #intro-description {
     grid-area: description;
     font-size: 20px;
   }
 }
 
-@media only screen and (max-width: 1279px){
-  #intro-wrapper{
+@media only screen and (max-width: 1279px) {
+  #intro-wrapper {
     padding: 50px 10px;
   }
-  #intro{
+  #intro {
     padding: 0 40px;
     width: 74%;
     margin: 0 auto;
@@ -73,30 +74,30 @@
     grid-template-rows: repeat(3, auto);
     row-gap: 20px;
   }
-  #intro-trailer{
+  #intro-trailer {
     width: 88%;
     margin: 0 auto;
   }
-  #intro-trailer > img{
+  #intro-trailer > img {
     width: 100%;
   }
-  #intro-title{
+  #intro-title {
     font-size: 32px;
     text-align: center;
     height: auto;
     line-height: 50px;
   }
-  #intro-description{
+  #intro-description {
     font-size: 20px;
     height: auto;
     text-align: center;
   }
 }
-@media only screen and (max-width: 639px){
-  #intro-wrapper{
+@media only screen and (max-width: 639px) {
+  #intro-wrapper {
     padding: 50px 0;
   }
-  #intro{
+  #intro {
     padding: 0 10px;
     width: 100%;
     box-sizing: border-box;
@@ -104,15 +105,13 @@
     grid-template-rows: repeat(3, auto);
     row-gap: 20px;
   }
-  #intro-title{
-    font-size: 22px;
+  #intro-title {
+    font-size: 17px;
     text-align: left;
-    height: 50px;
-    line-height: 22px;
+    line-height: 32px;
   }
-  #intro-description{
+  #intro-description {
     font-size: 16px;
-    height: auto;
     line-height: 22px;
     letter-spacing: 0.3px;
   }

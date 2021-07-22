@@ -1,0 +1,190 @@
+/*上部*/
+#progress-header {
+  width: 100%;
+  margin-bottom: 50px;
+}
+#progress-header-banner {
+  background-image: url("../imgs/progress-banner-9b4f22497f.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 480px;
+  margin-bottom: 80px;
+}
+#progress-header-content {
+  width: 630px;
+  padding: 0 60px;
+  margin: 0 auto;
+  text-align: center;
+  color: #4b535d;
+}
+#progress-header-title {
+  font-family: "Big Noodle Too,impact,sans-serif";
+  font-style: italic;
+  font-size: 40px;
+  line-height: 60px;
+  margin-bottom: 30px;
+}
+#progress-header-description {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 30px;
+  font-size: 21px;
+}
+
+@media only screen and (max-width: 1279px) {
+  #progress-header {
+    margin-bottom: 0;
+  }
+  #progress-header-banner {
+    height: 300px;
+    margin-bottom: 20px;
+  }
+  #progress-header-title {
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 10px;
+  }
+  #progress-header-description {
+    line-height: 26px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  #progress-header-banner {
+    height: 200px;
+    margin-bottom: 30px;
+  }
+  #progress-header-content {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    padding: 0 10px;
+  }
+  #progress-header-title {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+  #progress-header-description {
+    line-height: 22px;
+    font-size: 16px;
+  }
+}
+
+/*下部*/
+#progress-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 60px;
+}
+#progress-loot,
+#progress-achievements {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#progress-achievements {
+  flex-direction: row-reverse;
+}
+#progress-loot-content,
+#progress-achievements-content {
+  width: 600px;
+}
+#progress-loot-img {
+  min-width: 200px;
+  max-width: 200px;
+  height: 260px;
+  margin-right: 100px;
+}
+#progress-achievements-img {
+  min-width: 242px;
+  max-width: 242px;
+  margin-left: 100px;
+}
+#progress-loot-img > img,
+#progress-achievements-img > img {
+  width: 100%;
+}
+.progress-container-title {
+  font-family: "Big Noodle Too,impact,sans-serif";
+  color: #4b535d;
+  font-size: 21px;
+  line-height: 27px;
+  margin-bottom: 10px;
+}
+.progress-container-description {
+  color: #222;
+  line-height: 26px;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 1279px) {
+  #progress-loot,
+  #progress-achievements {
+    justify-content: center;
+  }
+  #progress-loot {
+    flex-direction: row-reverse;
+  }
+  #progress-loot-img {
+    margin-right: 30px;
+  }
+  #progress-achievements-img {
+    min-width: 200px;
+    max-width: 200px;
+    margin-left: 0;
+    margin-right: 30px;
+  }
+  .progress-container-title {
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .progress-container-description {
+    line-height: 24px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #progress-loot,
+  #progress-achievements {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  #progress-wrapper{
+    padding-bottom: 50px;
+  }
+  #progress-container {
+    padding: 0 10px;
+  }
+  #progress-loot,
+  #progress-achievements {
+    flex-direction: column-reverse;
+  }
+  #progress-loot-content,
+  #progress-achievements-content {
+    width: 100%;
+  }
+  .progress-container-title {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .progress-container-description {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  #progress-loot-img,
+  #progress-achievements-img {
+    /* max-width: 200px; */
+    max-width: 200px;
+    min-width: 80px;
+    height: auto;
+    margin: 0 auto;
+  }
+}

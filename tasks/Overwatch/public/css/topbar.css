@@ -1,71 +1,71 @@
-@media only screen and (min-width: 1279px){
-  #topbar{
+@media only screen and (min-width: 1279px) {
+  #topbar {
     width: 100%;
     padding: 0 40px;
     box-sizing: border-box;
     height: 40px;
     line-height: 40px;
-    background-color: #0B0D12;
-    color: #B6B7B8;
+    background-color: #0b0d12;
+    color: #b6b7b8;
     text-align: center;
     font-size: 14px;
   }
-  #topbar svg{
+  #topbar svg {
     float: left;
     width: 62px;
     height: 40px;
   }
-  #topbar-items{
+  #topbar-items {
     float: left;
     margin-left: 30px;
   }
-  #topbar-items > div{
+  #topbar-items > div {
     float: left;
     margin-right: 30px;
   }
-  #topbar-items > div.selected{
+  #topbar-items > div.selected {
     color: #fff;
   }
-  #topbar-profileItems{
+  #topbar-profileItems {
     float: right;
   }
-  #topbar-profileItems > div{
+  #topbar-profileItems > div {
     float: right;
     margin-left: 30px;
   }
   #topbar-items > div,
-  #topbar-profileItems > div{
+  #topbar-profileItems > div {
     cursor: pointer;
-    transition: .3s color;
+    transition: 0.3s color;
   }
   #topbar-items > div:hover,
-  #topbar-profileItems > div:hover{
+  #topbar-profileItems > div:hover {
     color: #fff;
   }
   #topbar-items > div > i,
-  #topbar-profileItems > div > i{
+  #topbar-profileItems > div > i {
     font-size: 12px;
-    color: #57585C;
+    color: #57585c;
     vertical-align: middle;
-    transition: .3s color;
+    transition: 0.3s color;
   }
   #topbar-items > div:hover > i,
-  #topbar-profileItems > div:hover > i{
+  #topbar-profileItems > div:hover > i {
     color: #858689;
   }
-  #topbar .Navbar-svgLogoAlternate{
-    fill:#399AE5
+  #topbar .Navbar-svgLogoAlternate {
+    fill: #399ae5;
   }
-  #topbar-mobile{
+  #topbar-mobile {
     display: none;
   }
 }
 
-@media only screen and (max-width: 1279px){
-  #topbar{
+@media only screen and (max-width: 1279px) {
+  #topbar {
     display: none;
   }
-  #topbar-mobile{
+  #topbar-mobile {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -74,25 +74,25 @@
     height: 48px;
     line-height: 48px;
   }
-  #topbar-mobile > i{
+  #topbar-mobile > i {
     font-size: 24px;
-    color: #41AEFF;
+    color: #41aeff;
     cursor: pointer;
   }
-  #topbar-mobile > i:nth-child(1){
-    color: #363C42;
+  #topbar-mobile > i:nth-child(1) {
+    color: #363c42;
   }
-  #topbar-mobile > i:nth-child(3):hover{
-    color: #00C6FF;
+  #topbar-mobile > i:nth-child(3):hover {
+    color: #00c6ff;
   }
-  #topbar-mobile-logo{
+  #topbar-mobile-logo {
     display: inline-block;
     width: 36px;
     height: 36px;
     position: relative;
     top: 6px;
   }
-  #topbar-mobile-logo path:nth-child(2){
-    fill: #363C42;
+  #topbar-mobile-logo path:nth-child(2) {
+    fill: #363c42;
   }
 }

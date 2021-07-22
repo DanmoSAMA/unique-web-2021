@@ -1,34 +1,34 @@
-#about{
+#about {
   width: 100%;
   position: relative;
 }
-#about h1{
+#about h1 {
   font-family: "Big Noodle Too,impact,sans-serif";
   text-align: center;
   font-style: italic;
-  color: #4C535D;
+  color: #4c535d;
 }
-@media only screen and (min-width: 1279px){
-  #about{
+@media only screen and (min-width: 1279px) {
+  #about {
     height: 150px;
     padding: 90px 0 20px 0;
     background: url(../imgs/bg-desktop-a551c87052.jpg);
   }
-  #about h1{
+  #about h1 {
     font-size: 55px;
     margin-top: 40px;
   }
-  #about-bar{
+  #about-bar {
     display: flex;
   }
-  #about-logo{
+  #about-logo {
     display: inline-block;
     min-width: 54px;
     height: 50px;
-    background-color: #353B41;
+    background-color: #353b41;
     position: relative;
   }
-  #about-logo svg{
+  #about-logo svg {
     width: 40px;
     height: 37px;
     position: absolute;
@@ -36,7 +36,7 @@
     right: 0;
     margin: 6.5px auto;
   }
-  #about-bar{
+  #about-bar {
     box-sizing: border-box;
     width: 100%;
     padding: 0 20px;
@@ -45,82 +45,82 @@
     font-family: FuturaNo2D, "Century Gothic", AppleGothic, sans-serif;
     font-weight: bold;
     font-size: 15px;
-    color: #4C535D;
+    color: #4c535d;
     position: absolute;
     top: 40px;
   }
-  #about-bar .devide-line{
-    background-color: #F2F1ED;
+  #about-bar .devide-line {
+    background-color: #f2f1ed;
     height: 50px;
   }
-  #about-bar .devide-line > span{
+  #about-bar .devide-line > span {
     display: inline-block;
     position: relative;
     width: 1px;
     height: 30px;
-    background-color: #E5E3DC;
+    background-color: #e5e3dc;
     top: 10px;
   }
-  #about-bar > .about-bar-item{
-    background-color: #F2F1ED;
+  #about-bar > .about-bar-item {
+    background-color: #f2f1ed;
     padding: 0 20px;
     cursor: pointer;
-    transition: .3s color;
+    transition: 0.3s color;
     text-align: center;
     display: flex;
     justify-content: space-around;
   }
-  #about-bar > .about-bar-item > i{
+  #about-bar > .about-bar-item > i {
     float: left;
   }
-  #about-bar #occupy{
+  #about-bar #occupy {
     width: 40%;
-    background-color: #F2F1ED;
+    background-color: #f2f1ed;
   }
-  #about-bar #buy{
+  #about-bar #buy {
     min-width: 134.225px;
     font-size: 20px;
-    background-color: #E77327;
+    background-color: #e77327;
     color: #fff;
     padding: 0;
-    transition: .1s background-color;
+    transition: 0.1s background-color;
   }
-  #about-bar #buy:hover{
+  #about-bar #buy:hover {
     border-bottom: none;
-    background-color: #E66512;
+    background-color: #e66512;
   }
-  #about-bar > .about-bar-item > i{
+  #about-bar > .about-bar-item > i {
     position: relative;
     left: 3px;
     font-size: 14px;
     vertical-align: middle;
   }
-  #about-bar > div.selected{
-    border-bottom: 3.5px solid #E66512;
+  #about-bar > div.selected {
+    border-bottom: 3.5px solid #e66512;
   }
-  #about-bar > .about-bar-item:hover{
-    border-bottom: 3.5px solid #E66512;
-    color: #E66512;
+  #about-bar > .about-bar-item:hover {
+    border-bottom: 3.5px solid #e66512;
+    color: #e66512;
   }
 }
 
-@media only screen and (max-width: 1279px){
-  #about-bar{
+@media only screen and (max-width: 1279px) {
+  #about-bar {
     display: none;
   }
-  #about h1{
+  #about h1 {
     font-size: 50px;
     padding: 25px 20px;
     height: 50px;
-    line-height: 50px; 
+    line-height: 50px;
     background: url(../imgs/bg-desktop-a551c87052.jpg);
   }
 }
 
-@media only screen and (max-width: 639px){
-  #about h1{
+@media only screen and (max-width: 639px) {
+  #about h1 {
     height: 32px;
     line-height: 32px;
-    font-size: 25px;
+    font-size: 22px;
   }
 }

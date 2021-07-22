@@ -1,0 +1,405 @@
+/*上部*/
+#endorsements-header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 80px 60px;
+  text-align: center;
+  color: #4c535d;
+}
+#endorsements-header-title {
+  width: 750px;
+  line-height: 60px;
+  font-size: 40px;
+  font-style: italic;
+  font-family: "Big Noodle Too,impact,sans-serif";
+  margin: 0 auto;
+}
+#endorsements-header-description {
+  line-height: 30px;
+  width: 630px;
+  padding: 0 60px;
+  margin: 0 auto;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-size: 21px;
+}
+
+@media only screen and (max-width: 1279px) {
+  #endorsements-header-title {
+    line-height: 50px;
+    font-size: 32px;
+  }
+  #endorsements-header-description {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #endorsements-header {
+    padding: 30px 60px;
+  }
+  #endorsements-header-title {
+    width: 100%;
+  }
+  #endorsements-header-description {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  #endorsements-header {
+    padding: 30px 10px;
+  }
+  #endorsements-header-title {
+    font-size: 20px;
+    line-height: 25px;
+    text-align: left;
+  }
+  #endorsements-header-description {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+/*中部*/
+#endorsements-category {
+  width: 100%;
+  padding: 80px 90px;
+  box-sizing: border-box;
+  background-color: #f2f1ed;
+}
+#endorsements-category-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  gap: 5%;
+}
+.endorsements-category-cardItem {
+  display: grid;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  grid-template-rows: repeat(3, auto) 1fr;
+}
+.caller {
+  background-color: #f19512;
+}
+.teammate {
+  background-color: #c918f4;
+}
+.sportsmanship {
+  background-color: #3ece44;
+}
+.endorsements-category-card-icon {
+  width: 90px;
+  height: 90px;
+  margin: 30px auto 15px auto;
+}
+.endorsements-category-card-icon > svg {
+  width: 90px;
+  height: 90px;
+}
+.endorsements-category-card-icon > svg g {
+  fill: #fff;
+}
+.endorsements-category-card-title {
+  font-size: 20px;
+  line-height: 27px;
+}
+.endorsements-category-card-subtitle {
+  font-size: 16px;
+  line-height: 22px;
+  padding: 5px 0 30px 0;
+}
+.endorsements-category-card-description {
+  height: 66px;
+  text-align: center;
+  padding: 15px;
+  background-color: #f2f1ed;
+  color: #000;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+@media only screen and (max-width: 1279px) {
+  #endorsements-category-cards {
+    grid-template-columns: none;
+    grid-template-rows: 120px 120px 120px;
+    gap: 30px;
+    width: 750px;
+    margin: 0 auto;
+  }
+  .endorsements-category-cardItem {
+    height: 120px;
+    grid-template-rows: none;
+    grid-template-columns: 120px auto;
+    column-gap: 15px;
+    grid-template-areas:
+      "card-image card-title"
+      "card-image card-subtitle"
+      "card-image card-description";
+    text-align: left;
+  }
+  .caller {
+    background-color: #f2f1ed;
+  }
+  .teammate {
+    background-color: #f2f1ed;
+  }
+  .sportsmanship {
+    background-color: #f2f1ed;
+  }
+  .endorsements-category-card-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    position: relative;
+    grid-area: card-image;
+  }
+  .caller > .endorsements-category-card-icon {
+    background-color: #f19512;
+  }
+  .teammate > .endorsements-category-card-icon {
+    background-color: #c918f4;
+  }
+  .sportsmanship > .endorsements-category-card-icon {
+    background-color: #3ece44;
+  }
+  .endorsements-category-card-icon > svg {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .endorsements-category-card-title {
+    font-size: 19px;
+    line-height: 25px;
+    color: #4c535d;
+    grid-area: card-title;
+  }
+  .endorsements-category-card-subtitle {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 5px 0;
+    padding: 0;
+    color: #4c535d;
+    grid-area: card-subtitle;
+  }
+  .endorsements-category-card-description {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 22px;
+    grid-area: card-description;
+    padding: 0;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #endorsements-category {
+    padding: 30px 60px;
+  }
+  #endorsements-category-cards {
+    grid-template-columns: none;
+    grid-template-rows: 120px 120px 120px;
+    gap: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #endorsements-category-cardItem {
+    height: auto;
+  }
+  .endorsements-category-card-icon {
+    width: 70px;
+    height: 70px;
+  }
+  .endorsements-category-card-icon > svg {
+    width: 50px;
+    height: 50px;
+  }
+  .endorsements-category-cardItem {
+    grid-template-columns: 70px auto;
+  }
+  .endorsements-category-card-title {
+    width: 100%;
+  }
+  .endorsements-category-card-subtitle {
+    width: 100%;
+  }
+  .endorsements-category-card-description {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 639px) {
+  #endorsements-category {
+    padding: 30px 10px;
+  }
+  #endorsements-category-cards {
+    grid-template-rows: repeat(3, auto);
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .endorsements-category-cardItem {
+    height: auto;
+  }
+  .endorsements-category-card-title {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .endorsements-category-card-subtitle {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .endorsements-category-card-description {
+    height: auto;
+  }
+}
+
+/*下部*/
+#endorsements-levels {
+  width: 100%;
+  padding: 80px 60px;
+  box-sizing: border-box;
+}
+#endorsements-levels-content {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "levels video"
+    "decay video"
+    "rewards video";
+}
+#endorsementLevels-content {
+  grid-area: levels;
+}
+#endorsementDecay-content {
+  grid-area: decay;
+}
+#endorsementRewards-content {
+  grid-area: rewards;
+}
+.endorsement-title-bigFont,
+.endorsement-title-smallFont {
+  font-family: "Big Noodle Too,impact,sans-serif";
+  color: #4c535d;
+}
+.endorsement-description-bigFont,
+.endorsement-description-smallFont {
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  color: #333;
+}
+.endorsement-title-bigFont {
+  font-style: italic;
+  font-size: 35px;
+  line-height: 50px;
+}
+.endorsement-description-bigFont {
+  font-size: 21px;
+  line-height: 30px;
+}
+.endorsement-title-smallFont {
+  font-size: 20px;
+  line-height: 27px;
+}
+.endorsement-description-smallFont {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 24px;
+}
+#endorsement-Levels-video {
+  grid-area: video;
+  width: 86.5%;
+  margin: 0 auto;
+  height: 100%;
+}
+#endorsement-Levels-img {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+#endorsement-Levels-img > img {
+  width: 100%;
+  height: 100%;
+  transition: 0.2s all;
+  vertical-align: top;
+}
+#endorsement-Levels-img > img:hover {
+  transform: scale(1.02);
+}
+
+@media only screen and (max-width: 1279px) {
+  #endorsements-levels-content {
+    width: 100%;
+    margin: 0 auto;
+    grid-template-areas:
+      "levels"
+      "video"
+      "decay"
+      "rewards";
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(4, auto);
+  }
+  .endorsement-title-bigFont {
+    font-style: italic;
+    font-size: 27px;
+    line-height: 43px;
+  }
+  .endorsement-description-bigFont {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .endorsement-title-smallFont {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .endorsement-description-smallFont {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #endorsement-Levels-video {
+    max-width: 668px;
+  }
+  #endorsement-Levels-img {
+    max-width: 668px;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  #endorsements-levels {
+    padding: 30px 10px;
+  }
+  #endorsements-levels-content {
+    gap: 20px;
+  }
+  .endorsement-title-bigFont {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .endorsement-description-bigFont {
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 10px;
+  }
+  .endorsement-title-smallFont {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .endorsement-description-smallFont {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

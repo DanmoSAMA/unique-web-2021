@@ -1,48 +1,48 @@
-#crossPlay-wrapper{
+#crossPlay-wrapper {
   display: flex;
   width: 100%;
   min-height: 300px;
 }
-#crossPlay-content{
-  background-image: url('../imgs/crossplay-about-banner-half-c9df9d6528.jpg');
+#crossPlay-content {
+  background-image: url("../imgs/crossplay-about-banner-half-c9df9d6528.jpg");
   width: 48%;
   position: relative;
 }
-#crossPlay-platform{
+#crossPlay-platform {
   width: 52%;
   position: relative;
   left: -1px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
-#crossPlay-logoWrapper{
+#crossPlay-logoWrapper {
   width: 300px;
   height: 230px;
   padding: 35px 0;
   position: absolute;
 }
-#crossPlay-logo{
-  background-image: url('../imgs/CrossPlay-Logo-en_US-e034f6c006.png');
+#crossPlay-logo {
+  background-image: url("../imgs/CrossPlay-Logo-en_US-e034f6c006.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   width: 300px;
   height: 170px;
 }
-#crossPlay-btn{
+#crossPlay-btn {
   width: 200px;
   color: #fff;
-  background-color: #EB682B;
+  background-color: #eb682b;
   font-weight: bold;
   text-align: center;
-  transition: .1s all;
+  transition: 0.1s all;
   cursor: pointer;
   margin: 20px auto;
 }
-#crossPlay-btn:hover{
-  background-color: #F96414;
+#crossPlay-btn:hover {
+  background-color: #f96414;
   transform: scale(1.01);
 }
-#crossPlay-platform-items{
+#crossPlay-platform-items {
   display: grid;
   width: 390px;
   grid-template-columns: 170px 200px;
@@ -50,60 +50,60 @@
   gap: 50px;
   row-gap: 20px;
 }
-.crossPlay-platform-item > svg{
+.crossPlay-platform-item > svg {
   width: 170px;
   height: 50px;
 }
 
-@media only screen and (min-width: 1279px){
-  #crossPlay-content{
+@media only screen and (min-width: 1279px) {
+  #crossPlay-content {
     background-size: cover;
     background-position: right;
   }
-  #crossPlay-btn{
+  #crossPlay-btn {
     height: 45px;
     line-height: 45px;
     font-size: 18px;
   }
-  #crossPlay-logoWrapper{
+  #crossPlay-logoWrapper {
     left: auto;
     right: 250px;
   }
-  #crossPlay-platform-items{
+  #crossPlay-platform-items {
     margin: 100px 0 0 15px;
   }
 }
 
-@media only screen and (max-width: 1279px){
-  #crossPlay-content{
+@media only screen and (max-width: 1279px) {
+  #crossPlay-content {
     background-size: 320%;
     background-repeat: no-repeat;
     background-position: center;
   }
-  #crossPlay-logoWrapper{
+  #crossPlay-logoWrapper {
     left: auto;
     right: 40px;
   }
-  #crossPlay-btn{
+  #crossPlay-btn {
     height: 36px;
     line-height: 36px;
     font-size: 14px;
   }
-  #crossPlay-platform-items{
+  #crossPlay-platform-items {
     margin: 100px auto;
   }
 }
 
-@media only screen and (max-width: 959px){
-  #crossPlay-content{
+@media only screen and (max-width: 959px) {
+  #crossPlay-content {
     background-size: cover;
   }
-  #crossPlay-logoWrapper{
+  #crossPlay-logoWrapper {
     left: 0;
     right: 0;
     margin: 0 auto;
   }
-  #crossPlay-platform-items{
+  #crossPlay-platform-items {
     display: grid;
     width: 160px;
     grid-template-columns: 160px;
@@ -111,39 +111,74 @@
     row-gap: 10px;
     margin: 80px auto;
   }
-  #crossPlay-logo{
+  #crossPlay-logo {
     background-size: contain;
     background-position: center;
     width: 220px;
     height: 140px;
     margin: 0 auto;
   }
-  .crossPlay-platform-item > svg{
+  .crossPlay-platform-item > svg {
     width: 170px;
     transform: scale(0.72);
   }
 }
 
-@media only screen and (max-width: 639px){
-  #crossPlay-wrapper{
+@media only screen and (max-width: 639px) {
+  #crossPlay-wrapper {
     display: flex;
     flex-wrap: wrap;
   }
-  #crossPlay-content{
+  #crossPlay-content {
     width: 100%;
     height: 195px;
     padding: 35px 10px;
     background-size: 300%;
   }
-  #crossPlay-logoWrapper{
+  #crossPlay-logoWrapper {
     height: auto;
     padding: 0;
   }
-  #crossPlay-platform{
+  #crossPlay-platform {
     width: 100%;
     height: 235px;
   }
-  #crossPlay-platform-items{
+  #crossPlay-platform-items {
     margin: 45px auto;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  #crossPlay-logoWrapper {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    background-size: 500px 500px;
+  }
+  #crossPlay-content {
+    background-size: auto 100%;
+  }
+  #crossPlay-btn {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 253px) {
+  #crossPlay-logo {
+    width: 100%;
+  }
+  #crossPlay-platform-items {
+    width: 100%;
+    grid-template-columns: 100%;
+  }
+  .crossPlay-platform-item {
+    position: relative;
+  }
+  .crossPlay-platform-item > svg {
+    width: 140px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
 }

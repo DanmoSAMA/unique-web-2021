@@ -1,30 +1,30 @@
-#modes-wrapper{
+#modes-wrapper {
   width: 100%;
   padding: 80px 0;
-  background-image: url('../imgs/modes-bg-917e990cff.jpg');
+  background-image: url("../imgs/modes-bg-917e990cff.jpg");
   background-size: cover;
   background-position: center;
 }
-#modes{
+#modes {
   box-sizing: border-box;
   width: 88%;
   padding: 0 40px;
   margin: 0 auto;
 }
-#modes-header{
+#modes-header {
   max-width: 630px;
   padding: 0 60px;
   margin: 0 auto;
   text-align: center;
 }
-#modes-title{
+#modes-title {
   line-height: 60px;
   font-family: "Big Noodle Too,impact,sans-serif";
   font-style: italic;
   font-size: 44px;
-  color: #4B535D;
+  color: #4b535d;
 }
-#modes-description{
+#modes-description {
   height: 90px;
   line-height: 30px;
   font-size: 20px;
@@ -32,7 +32,7 @@
   letter-spacing: 0.35px;
   margin-top: 12.6px;
 }
-#modes-cards{
+#modes-cards {
   box-sizing: border-box;
   width: 100%;
   padding: 20px 10px 0 10px;
@@ -40,7 +40,7 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.modes-cardItem{
+.modes-cardItem {
   display: grid;
   background-color: #fff;
   width: 360px;
@@ -51,33 +51,33 @@
   grid-template-rows: auto 50px 1fr;
   justify-items: center;
 }
-.modes-cardItem svg{
+.modes-cardItem svg {
   width: 50px;
   height: 50px;
 }
 .modes-cardItem svg path,
-.modes-cardItem svg g{
-  fill: #4B535D;
+.modes-cardItem svg g {
+  fill: #4b535d;
 }
-.modes-cards-content{
+.modes-cards-content {
   padding: 0 30px 30px 30px;
 }
-.modes-cards-title{
+.modes-cards-title {
   font-size: 21px;
   text-align: center;
   height: 27px;
   line-height: 27px;
-  color: #4B535D;
+  color: #4b535d;
 }
-.modes-cards-description{
+.modes-cards-description {
   line-height: 24px;
   color: #333;
   font-size: 15.5px;
   margin-top: 9.6px;
 }
-#modes-cards-btn{
+#modes-cards-btn {
   display: block;
-  background-color: #FF9C00;
+  background-color: #ff9c00;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
@@ -86,38 +86,38 @@
   line-height: 27px;
   padding: 6px 21px;
   margin-top: 15px;
-  transition: .1s background-color, .1s font-size, .1s color;
+  transition: 0.1s background-color, 0.1s font-size, 0.1s color;
 }
-#modes-cards-btn:hover{
-  background-color: #F7AF30;
+#modes-cards-btn:hover {
+  background-color: #f7af30;
 }
 
-@media only screen and (max-width: 1279px){
-  #modes{
+@media only screen and (max-width: 1279px) {
+  #modes {
     box-sizing: border-box;
     width: 100%;
     padding: 0 40px;
   }
-  #modes-title{
+  #modes-title {
     font-size: 35px;
     line-height: 50px;
   }
-  #modes-description{
+  #modes-description {
     font-size: 18px;
     line-height: 25px;
   }
-  .modes-cards-title{
+  .modes-cards-title {
     font-size: 18px;
     height: 25px;
     line-height: 25px;
   }
-  .modes-cards-description{
+  .modes-cards-description {
     line-height: 18px;
     font-size: 14px;
     letter-spacing: 0.2px;
-    font-family: Roboto,Helvetica Neue,Arial,sans-serif;
+    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
   }
-  #modes-cards-btn{
+  #modes-cards-btn {
     font-size: 14px;
     height: 16px;
     line-height: 16px;
@@ -126,23 +126,23 @@
   }
 }
 
-@media only screen and (max-width: 959px){
-  #modes-wrapper{
+@media only screen and (max-width: 959px) {
+  #modes-wrapper {
     padding: 50px 0;
   }
-  #modes{
+  #modes {
     box-sizing: border-box;
     width: 100%;
     padding: 0 40px;
   }
-  #modes-header{
+  #modes-header {
     width: 100%;
     padding: 0 10px;
   }
-  .modes-cardItem > img{
+  .modes-cardItem > img {
     display: none;
   }
-  .modes-cardItem{
+  .modes-cardItem {
     background-color: transparent;
     width: 100%;
     height: auto;
@@ -152,51 +152,51 @@
     grid-template-columns: 50px auto;
     grid-template-rows: auto;
     gap: 15px;
-  }  
-  .modes-cards-content{
+  }
+  .modes-cards-content {
     width: 100%;
     padding: 0;
   }
-  .modes-cards-title{
+  .modes-cards-title {
     text-align: left;
   }
-  .modes-cardItem svg{
+  .modes-cardItem svg {
     width: 34px;
     height: 34px;
     padding: 8px;
     background-color: #fff;
   }
-  #modes-cards-btn{
+  #modes-cards-btn {
     background-color: transparent;
-    color: #FF9C00;
+    color: #ff9c00;
     text-align: left;
     padding: 0;
     margin: 5px 0 0 0;
   }
-  #modes-cards-btn:hover{
+  #modes-cards-btn:hover {
     background-color: transparent;
-    color: #F7AF30;
+    color: #f7af30;
   }
 }
 
-@media only screen and (max-width: 639px){
-  #modes-wrapper{
+@media only screen and (max-width: 639px) {
+  #modes-wrapper {
     padding: 30px 0;
   }
-  #modes{
+  #modes {
     box-sizing: border-box;
     width: 100%;
     padding: 0 10px;
   }
-  #modes-header{
+  #modes-header {
     padding: 0;
     text-align: left;
   }
-  #modes-title{
+  #modes-title {
     line-height: 30px;
     font-size: 22px;
   }
-  #modes-description{
+  #modes-description {
     height: auto;
     width: auto;
     line-height: 20px;
@@ -204,18 +204,27 @@
     letter-spacing: 0.35px;
     margin-top: 9.6px;
   }
-  .modes-cards-content{
+  #modes-cards {
+    padding: 0;
+    overflow: hidden;
+  }
+  .modes-cards-content {
     width: 100%;
     padding: 0;
   }
-  .modes-cards-title{
+  .modes-cards-title {
     font-size: 17px;
-    height: 21px;
+    height: auto;
     line-height: 21px;
   }
-  .modes-cards-description{
+  .modes-cards-description {
+    height: auto;
+    overflow: hidden;
     line-height: 18px;
     font-size: 11px;
     margin-top: 7.2px;
+  }
+  #modes-cards-btn {
+    height: auto;
   }
 }
