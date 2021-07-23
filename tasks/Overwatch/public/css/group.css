@@ -67,7 +67,7 @@
     position: relative;
   }
   #group-content {
-    margin-top: 40px;
+    margin: 40px auto;
   }
   #group-title {
     font-size: 35px;
@@ -106,5 +106,4 @@
     font-size: 16px;
     line-height: 22px;
   }
-
 }

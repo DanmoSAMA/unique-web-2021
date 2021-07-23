@@ -1,0 +1,195 @@
+/*account*/
+#account {
+  position: relative;
+}
+#account-dropDown::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #191f2a;
+  transform: rotate(45deg);
+  border: 1px solid #353d4c;
+  top: -6px;
+  right: 18px;
+  z-index: -1;
+}
+#account-dropDown::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #191f2a;
+  top: 0;
+  right: 14px;
+  z-index: 1;
+}
+#account-dropDown {
+  display: none;
+  /* display: flex; */
+  position: absolute;
+  z-index: 10;
+  top: 40px;
+  right: -20px;
+  background-color: #191f2a;
+  width: 317px;
+  height: 166px;
+  border-top: 1px solid #353d4c;
+  border-right: 1px solid #353d4c;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.3);
+  cursor: default;
+  flex-direction: column;
+}
+#account-dropDown.selected {
+  display: flex;
+}
+#account-dropDown-header {
+  padding: 20px;
+  border-bottom: 1px solid #353d4c;
+}
+.account-dropDown-btn {
+  display: block;
+  width: 175px;
+  height: 16px;
+  line-height: 16px;
+  border: 1px solid #00aeff;
+  padding: 10px 50px;
+  color: #fff;
+  background-color: #006fb2;
+  font-size: 16px;
+  transition: 0.1s all;
+  text-align: center;
+}
+.account-dropDown-btn:hover {
+  background-color: #317ac6;
+  border-color: #80c4ea;
+}
+.account-item {
+  text-align: left;
+  height: 43px;
+  padding: 0 20px;
+  border-bottom: 1px solid #353d4c;
+  font-family: Open Sans, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  display: flex;
+  cursor: pointer;
+  transition: 0.3s color;
+}
+.account-item-icon > svg {
+  width: 24px !important;
+  height: 100%;
+  margin-right: 5px;
+}
+.account-item-icon > svg path {
+  fill: #00aeff;
+  transition: 0.3s all;
+}
+.account-item:hover {
+  color: #fff;
+}
+.account-item:hover path {
+  fill: #4dcfff;
+}
+
+/*games*/
+#games {
+  position: relative;
+}
+#games-dropDown {
+  display: none;
+  height: 350px;
+  position: absolute;
+  background-color: #1d232d;
+  left: -132px;
+  top: 40px;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #393d44;
+}
+#games-dropDown.selected {
+  display: block;
+}
+#games-dropDown::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #191f2a;
+  transform: rotate(45deg);
+  border: 1px solid #353d4c;
+  top: -6px;
+  left: 185px;
+  z-index: -1;
+}
+#games-dropDown::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #191f2a;
+  top: 0;
+  left: 181px;
+  z-index: 1;
+}
+#games-presentation {
+  padding: 20px 40px;
+  height: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.games-presentation-item {
+  display: flex;
+  min-width: 10%;
+  height: 130px;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+.games-presentation-item > img {
+  width: 64px;
+}
+.games-presentation-item > span {
+  display: block;
+  line-height: 16px;
+  width: 80%;
+  color: #b8babd;
+  font-size: 12px;
+}
+.games-presentation-item > img,
+.games-presentation-item > span {
+  position: relative;
+  top: 16px;
+}
+#games-nav {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #393d44;
+  display: flex;
+  justify-content: center;
+}
+.games-nav-item {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+.games-nav-item:hover > span {
+  color: #fff;
+}
+.games-nav-item:hover * {
+  fill: #4dcfff;
+}
+.games-nav-item > svg {
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 4px;
+}
+.games-nav-item > svg > * {
+  fill: #00aeff;
+  transition: 0.1s all;
+}
+.games-nav-item > span {
+  color: #bbbdc0;
+  transition: 0.1s all;
+}

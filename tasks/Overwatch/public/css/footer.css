@@ -1,0 +1,133 @@
+#footer {
+  padding-top: 20px;
+  background-color: #f0edf2;
+  text-align: center;
+  font-family: Open Sans, Helvetica, Arial, sans-serif;
+}
+#footer-selector {
+  line-height: 24px;
+  color: #484748;
+}
+#footer-selector > i {
+  color: #00aeff;
+  font-size: 18px;
+  vertical-align: top;
+  margin-right: 4px;
+}
+#footer-logo-container {
+  height: 66px;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+#footer-logo-container > a {
+  display: block;
+  width: 124px;
+  height: 66px;
+  position: relative;
+}
+#footer-logo-container svg {
+  width: 124px;
+  position: absolute;
+  left: 0;
+}
+#footer-logo-container svg:nth-of-type(2) path,
+#footer-logo-container svg:nth-of-type(2) g,
+#footer-logo-container svg:nth-of-type(2) polygon {
+  fill: #00aeff;
+  transition: 0.1s fill;
+}
+#footer-logo-container svg:hover path,
+#footer-logo-container svg:hover g,
+#footer-logo-container svg:hover polygon {
+  fill: #4AC4FF;
+}
+#footer-nav{
+  line-height: 24px;
+  margin: 15px 0;
+}
+#footer-nav > a{
+  display: inline-block;
+  color: #484748;
+  margin: 0 12px;
+  position: relative;
+}
+#footer-nav > a::before{
+  content: '|';
+  font-size: 10px;
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  color: #A8A5A9;
+}
+#footer-nav > a:nth-of-type(1)::before{
+  content: '';
+}
+#footer-download{
+  margin: 40px 0;
+  line-height: 24px;
+}
+#footer-download > span{
+  color: #666;
+}
+#footer-download > a{
+  color: #008CE5;
+}
+#footer-copyright{
+  line-height: 18px;
+  font-size: 12px;
+}
+#footer-trademark{
+  font-size: 13px;
+  color: #777;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+#footer-trademark > a{
+  color: #F06414;
+  transition: .15s color;
+}
+#footer-trademark > a:hover{
+  color: #FEB440;
+}
+#footer-links{
+  line-height: 22px;
+}
+#footer-links > a{
+  display: inline-block;
+  font-size: 12px;
+  color: #666;
+  margin: 0 8px;
+  position: relative;
+}
+#footer-links > a::before{
+  content: '|';
+  font-size: 10px;
+  position: absolute;
+  left: -11px;
+  top: -1px;
+  color: #A8A5A9;
+}
+#footer-links > a:nth-of-type(1):before{
+  content: '';
+}
+#footer-legal{
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+#footer-legal > img{
+  height: 97px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+#footer-legal-content > p{
+  line-height: 16px;
+  font-size: 12px;
+  color: #666;
+}
+#footer-legal-content > hr{
+  border: 1px solid #666;
+  margin: 8px 0;
+}

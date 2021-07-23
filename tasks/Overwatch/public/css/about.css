@@ -27,6 +27,10 @@
     height: 50px;
     background-color: #353b41;
     position: relative;
+    transition: 0.1s background-color;
+  }
+  #about-logo:hover {
+    background-color: #262a2d;
   }
   #about-logo svg {
     width: 40px;
@@ -48,6 +52,13 @@
     color: #4c535d;
     position: absolute;
     top: 40px;
+    z-index: 1;
+    transition: 0.2s width;
+  }
+  #about-bar.fixed {
+    position: fixed;
+    top: 0;
+    background-color: #f2f1ed;
   }
   #about-bar .devide-line {
     background-color: #f2f1ed;
@@ -77,7 +88,7 @@
     width: 40%;
     background-color: #f2f1ed;
   }
-  #about-bar #buy {
+  #about-bar #about-buy-btn {
     min-width: 134.225px;
     font-size: 20px;
     background-color: #e77327;
@@ -85,7 +96,7 @@
     padding: 0;
     transition: 0.1s background-color;
   }
-  #about-bar #buy:hover {
+  #about-bar #about-buy-btn:hover {
     border-bottom: none;
     background-color: #e66512;
   }

@@ -1,0 +1,130 @@
+#topbar-mobileNav {
+  width: 319px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  background-color: #2f3543;
+  z-index: 10;
+  right: 0;
+  overflow-y: auto;
+  transition: 0.15s width;
+}
+#topbar-mobileNav.loaded {
+  width: 319px;
+}
+#topbar-mobileNav-icon {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #3b404b;
+}
+#topbar-mobileNav-header {
+  height: 210px;
+  background-color: #2a303c;
+  position: relative;
+}
+#topbar-mobileNav-login {
+  height: 38px;
+  padding: 20px;
+  border-bottom: 1px solid #3b404b;
+}
+.topbar-mobileNav-item {
+  display: flex;
+  padding: 0 20px;
+  height: 43px;
+  line-height: 43px;
+  align-items: center;
+  border-bottom: 1px solid #3b404b;
+  color: #b5b8bc;
+  cursor: pointer;
+}
+#topbar-mobileNav-icon > svg {
+  height: 40px;
+}
+#topbar-mobileNav-icon > svg * {
+  fill: #00aeff;
+}
+#close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#close-btn > svg {
+  width: 24px;
+  height: 24px;
+}
+#close-btn > svg * {
+  fill: #00aeff;
+  transition: 0.1s all;
+}
+#close-btn:hover * {
+  fill: #47bdf6;
+}
+.topbar-mobileNav-item > svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+}
+.topbar-mobileNav-item > svg * {
+  fill: #00aeff;
+}
+.topbar-mobileNav-item > span > i {
+  font-size: 10px;
+  vertical-align: middle;
+  margin-left: 4px;
+  color: #6e727c;
+}
+#topbar-mobileNav-games {
+  height: 44px;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #21252f;
+  padding: 0;
+  transition: 0.4s height;
+}
+#topbar-mobileNav-games.selected {
+  height: 684px;
+}
+#topbar-mobileNav-games > span {
+  display: block;
+  width: 100%;
+  background-color: #2f3543;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.topbar-mobileNav-gameItem {
+  display: flex;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+  color: #bdbec1;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.topbar-mobileNav-gameItem > img {
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+}
+.topbar-mobileNav-gameItem > svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+}
+.topbar-mobileNav-gameItem > svg * {
+  fill: #00aeff;
+}
+@media only screen and (min-width: 1279px) {
+  #topbar-mobileNav {
+    display: none;
+  }
+}

@@ -157,7 +157,7 @@
 }
 
 @media only screen and (max-width: 639px) {
-  #progress-wrapper{
+  #progress-wrapper {
     padding-bottom: 50px;
   }
   #progress-container {
@@ -181,7 +181,6 @@
   }
   #progress-loot-img,
   #progress-achievements-img {
-    /* max-width: 200px; */
     max-width: 200px;
     min-width: 80px;
     height: auto;
