@@ -1,3 +1,4 @@
+/*上部*/
 #heroes-wrapper {
   width: 100%;
   box-sizing: border-box;
@@ -8,12 +9,11 @@
 #heroes {
   box-sizing: border-box;
   padding: 0 40px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 #heroes-msg {
   width: 100%;
-  /* height: 200px; */
   display: grid;
   grid-template-rows: repeat(2, auto);
   row-gap: 10px;
@@ -38,9 +38,6 @@
 }
 
 @media only screen and (max-width: 1279px) {
-  #heroes-wrapper {
-    /* height: 593px; */
-  }
   #heroes-title {
     font-size: 30px;
   }
@@ -75,5 +72,262 @@
   #heroes-text {
     font-size: 16px;
     line-height: 22px;
+  }
+}
+
+/*下部（轮播图）*/
+#heroes-select-wrapper {
+  width: 1020px;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#heroes-roleselect-wrapper {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px 54px;
+}
+#heroes-roleselect-content {
+  display: flex;
+  flex-direction: column;
+}
+#heroes-roleselect-title {
+  color: #fff;
+  line-height: 22px;
+  font-weight: bold;
+  font-size: 14px;
+}
+#heroes-roleselect-list {
+  display: flex;
+  margin-top: 10px;
+}
+.heroes-roleselect-listItem {
+  line-height: 17.5px;
+  height: 17.5px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border-top: 1px solid #9b9da2;
+  border-bottom: 1px solid #9b9da2;
+  border-right: 2px solid #9b9da2;
+  font-size: 14px;
+  color: #4b535d;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+}
+.heroes-roleselect-listItem:first-of-type {
+  border-left: 2px solid #9b9da2;
+}
+.heroes-roleselect-listItem.active {
+  background-color: #212529;
+  border-top: 1px solid #212529;
+  border-bottom: 1px solid #212529;
+  border-right: 2px solid #212529;
+  /* border-left: 2px solid #212529; */
+  color: #fff;
+}
+.heroes-roleselect-listItem-num {
+  display: inline-block;
+  color: #9b9da2;
+  margin-left: 4px;
+}
+#heroes-carousel-wrapper {
+  display: flex;
+}
+#heroes-carousel-content {
+  display: flex;
+  width: 940px;
+  height: 345px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.heroes-carousel-icon {
+  display: flex;
+  width: 35px;
+  align-items: center;
+  cursor: pointer;
+}
+.heroes-carousel-icon:hover * {
+  fill: #f69b00;
+}
+.heroes-carousel-icon:first-of-type {
+  margin-right: 10px;
+}
+.heroes-carousel-icon:last-of-type {
+  margin-left: 10px;
+}
+.heroes-carousel-icon:first-of-type > svg {
+  transform: rotate(90deg);
+}
+.heroes-carousel-icon:last-of-type > svg {
+  transform: rotate(-90deg);
+}
+.Svg-icon {
+  width: 35px;
+  height: 35px;
+}
+.Svg-icon * {
+  fill: #fff;
+  transition: 0.15s all;
+}
+.heroes-carousel-icon.disabled {
+  cursor: default;
+}
+.heroes-carousel-icon.disabled .Svg-icon * {
+  fill: #c6d4f1;
+}
+#heroes-carousel-items {
+  display: flex;
+  position: relative;
+  left: 0;
+  transition: 0.3s left;
+}
+.heroes-carousel-item {
+  width: 223px;
+  margin: 0 6px;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+}
+.heroes-carousel-item:hover img {
+  transform: scale(1.03);
+}
+.heroes-carousel-item:hover .heroes-carousel-svg {
+  transform: scale(1);
+}
+.heroes-carousel-imgWrapper {
+  background-image: url("../imgs/hero-portrait-detailed-bg-c659e0b7f6.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 295px;
+  overflow: hidden;
+  position: relative;
+}
+.heroes-carousel-imgWrapper > img {
+  width: 223px;
+  position: absolute;
+  top: -45px;
+  display: block;
+  transition: 0.2s transform;
+}
+.heroes-carousel-itemContent {
+  padding: 13px 16px;
+  background-color: #fff;
+  height: 21.6px;
+  color: #4d4d4d;
+}
+.heroes-carousel-itemTitle {
+  text-align: center;
+  font-size: 16px;
+}
+.heroes-carousel-svg {
+  width: 12px;
+  height: 12px;
+}
+#heroes-select-viewAll {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+}
+#heroes-select-viewAll-btn {
+  position: absolute;
+  width: 205px;
+  line-height: 45px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  top: 56px;
+  right: 38px;
+}
+.HeroSelect-allHeroes-link--arrowIcon {
+  width: 20px;
+  height: 20px;
+  transform: rotate(-90deg);
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+}
+.HeroSelect-allHeroes-link--arrowIcon * {
+  fill: #fff;
+}
+
+@media only screen and (max-width: 1279px) {
+  #heroes-select-wrapper {
+    width: 100%;
+  }
+  #heroes-roleselect-wrapper {
+    justify-content: center;
+  }
+  #heroes-roleselect-title {
+    text-align: center;
+  }
+  #heroes-carousel-content {
+    width: 760px;
+    height: 270px;
+  }
+  .heroes-carousel-item {
+    width: 180px;
+    height: 270px;
+  }
+  .heroes-carousel-imgWrapper {
+    height: 222px;
+  }
+  .heroes-carousel-imgWrapper > img {
+    width: 180px;
+    top: -40px;
+  }
+  #heroes-select-viewAll-btn {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 15px;
+    width: 198px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #fff;
+  }
+  .HeroSelect-allHeroes-link--arrowIcon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #heroes-carousel-content {
+    width: 600px;
+  }
+  .heroes-carousel-icon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  #heroes-carousel-content {
+    width: 440px;
+    height: 240px;
+  }
+  .heroes-carousel-item {
+    width: 157px;
+    height: 240px;
+  }
+  .heroes-carousel-imgWrapper {
+    height: 204px;
+  }
+  .heroes-carousel-imgWrapper > img {
+    width: 157px;
+  }
+  .heroes-carousel-itemContent {
+    width: 125px;
+    padding: 8px 16px;
+    height: 18px;
+    line-height: 18px;
+  }
+  .heroes-carousel-itemTitle {
+    font-size: 14px;
   }
 }

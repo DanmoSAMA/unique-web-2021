@@ -8,4 +8,4 @@ import {} from "./mobile-nav.js";
 
 import {} from "./aboutbar.js"
 
-import {} from "./slideshow.js";
+import {} from "./carousel.js";

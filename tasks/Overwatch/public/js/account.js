@@ -3,8 +3,8 @@ const accountBtn = document.getElementById("account-btn");
 const mask = document.getElementById("mask");
 const icon = document.getElementById("account-downArrow");
 
-accountBtn.addEventListener("click", click);
 window.addEventListener("resize", resize);
+accountBtn.addEventListener("click", click);
 
 function click(event) {
   dropDown.className = "selected";
@@ -20,6 +20,7 @@ function anotherClick(event) {
     dropDown.className = "";
     mask.className = "";
     icon.innerHTML = "&#xe60b;";
+    document.removeEventListener("click", anotherClick);
   }
 }
 

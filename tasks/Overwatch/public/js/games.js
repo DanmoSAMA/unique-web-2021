@@ -4,9 +4,8 @@ const mask = document.getElementById("mask");
 const icon = document.getElementById("games-downArrow");
 
 dropDown.style.width = document.body.clientWidth + "px";
-window.addEventListener('resize', resize);
-gamesBtn.addEventListener('click', click);
 window.addEventListener("resize", resize);
+gamesBtn.addEventListener("click", click);
 
 function click(event) {
   dropDown.className = "selected";
@@ -22,6 +21,7 @@ function anotherClick(event) {
     dropDown.className = "";
     mask.className = "";
     icon.innerHTML = "&#xe60b;";
+    document.removeEventListener("click", anotherClick);
   }
 }
 
@@ -29,4 +29,5 @@ function resize() {
   dropDown.className = "";
   mask.className = "";
   icon.innerHTML = "&#xe60b;";
+  dropDown.style.width = document.body.clientWidth + "px";
 }

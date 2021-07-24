@@ -55,10 +55,25 @@
     z-index: 1;
     transition: 0.2s width;
   }
+  #about-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 95%;
+    height: 50px;
+    box-sizing: border-box;
+    background-color: #f2f1ed;
+    z-index: -1;
+    transition: 0.35s all;
+  }
   #about-bar.fixed {
     position: fixed;
     top: 0;
-    background-color: #f2f1ed;
+  }
+  #about-bar.fixed::before {
+    width: 100%;
+    left: 0;
   }
   #about-bar .devide-line {
     background-color: #f2f1ed;
